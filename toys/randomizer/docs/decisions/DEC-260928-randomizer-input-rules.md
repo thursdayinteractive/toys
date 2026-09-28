@@ -1,6 +1,6 @@
 ---
 id: DEC-260928-randomizer-input-rules
-status: proposed
+status: accepted
 ---
 
 # Randomizer input rules
