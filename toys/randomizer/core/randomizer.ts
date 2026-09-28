@@ -1,5 +1,4 @@
-// The randomizer core ([[randomizer§1]]–[[randomizer§4]], [[DEC-260928-randomizer-weighting]],
-// [[DEC-260928-randomizer-input-rules]]). Plain data in and out, no platform imports ([[§3]]).
+// The randomizer core ([[randomizer§1]]–[[randomizer§4]], [[randomizer§7]]). Plain data in and out, no platform imports ([[§3]]).
 
 /** One entry in a randomizer list ([[randomizer§1]]). */
 export interface Item {
@@ -7,7 +6,7 @@ export interface Item {
   readonly multiplier: number;
 }
 
-/** Reported when the active set is empty or every multiplier in it is 0 ([[DEC-260928-randomizer-input-rules#clause-7]]). */
+/** Reported when the active set is empty or every multiplier in it is 0 ([[randomizer§7 item 7]]). */
 export interface NoViableOptions {
   readonly kind: 'no-viable-options';
 }
@@ -59,14 +58,14 @@ export function pick(activeSet: readonly Item[], random: number): PickResult {
   return { kind: 'picked', index };
 }
 
-/** Chance as a percentage to two decimal places ([[DEC-260928-randomizer-input-rules#clause-5]]). */
+/** Chance as a percentage to two decimal places ([[randomizer§7 item 5]]). */
 export function formatChance(chance: number): string {
   return `${(chance * 100).toFixed(2)}%`;
 }
 
 /**
  * Whether the weight field may hold this text: digits with at most one decimal place,
- * and no minus sign ([[DEC-260928-randomizer-input-rules#clause-3]], [[DEC-260928-randomizer-input-rules#clause-4]]).
+ * and no minus sign ([[randomizer§7 item 2]]).
  */
 export function isMultiplierEntry(text: string): boolean {
   return /^\d*(\.\d?)?$/.test(text);
@@ -74,8 +73,8 @@ export function isMultiplierEntry(text: string): boolean {
 
 /**
  * The multiplier a weight field's text gives. An empty field gives 1.0
- * ([[DEC-260928-randomizer-input-rules#clause-1]]); a lone decimal point is an invalid
- * entry ([[DEC-260928-randomizer-invalid-entry#clause-1]]).
+ * ([[randomizer§7 item 1]]); a lone decimal point is an invalid
+ * entry ([[randomizer§7 item 3]]).
  */
 export function multiplierFromEntry(text: string): MultiplierEntryResult {
   if (text === '') return { kind: 'multiplier', multiplier: 1 };

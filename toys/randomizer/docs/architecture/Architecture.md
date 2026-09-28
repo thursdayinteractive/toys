@@ -1,6 +1,6 @@
 # Randomizer: Architecture
 
-This toy meets the repository's architecture: its core is platform-free, takes its randomness from its host, and stays usable as a curriculum app add-on. The randomizer and the dice roller are separate cores in this toy.
+This toy meets the repository's architecture: its core is platform-free, takes its randomness from its host, and stays usable as a curriculum app add-on. The randomizer and the dice roller are separate cores in this toy. This spec is the one home for the toy's behavior.
 
 ---
 
@@ -13,7 +13,7 @@ label        text the person entered
 multiplier   decimal number; how much more or less likely than other items
 ```
 
-A list starts empty.
+The person enters a multiplier for each item, such as 1, 1.2 or 2.0, never a percentage.
 
 ---
 
@@ -47,4 +47,42 @@ A die has a number of sides, entered as a number. A roll is of one or more dice 
 
 # 6. Storage
 
-A new list starts empty. A list can be saved under a title the person chooses, keeping each item's label and multiplier. Saved lists are kept as an array of titled lists. Saving goes through the storage interface, and the core does not change.
+A new list starts empty. Saving goes through the storage interface, and the core does not change.
+
+1. A list is saved under a title the person chooses, keeping each item's label and multiplier.
+2. A save button saves the list.
+3. A saved list is loaded by choosing it from a list of saved lists.
+4. A title cannot be blank, and is at most 14 characters long.
+5. A saved list can be deleted.
+6. One saved list is enough for now. Saved lists are kept as an array of titled lists, so more can be kept later without changing how a list is saved.
+
+---
+
+# 7. Weight entry and display
+
+1. An item entered without a multiplier gets 1.0.
+2. A weight field holds digits with at most one decimal place. It does not accept a minus sign or a second decimal place, and no message is shown. There is no maximum.
+3. A decimal works as a decimal: ".5" is 0.5 and "3." is 3. A field holding only a decimal point is an invalid entry: the warning "Invalid entry" shows, and the pick is not made while any weight field is invalid.
+4. A multiplier of 0 is allowed. The item's chance is 0% and it is never picked.
+5. Chances are displayed as percentages to two decimal places. The chances themselves are never rounded, so the displayed percentages may not add to exactly 100.00%.
+6. Blank and duplicate labels are allowed. Each entry is a separate item.
+7. When the active set is empty, or every multiplier in it is 0, no chances are computed and no pick is made. The core reports that no viable option remains, and the host shows "No viable options remain." Because this stops first, chances always total 100% and a pick always returns one item ([[randomizer§2]], [[randomizer§4]]).
+
+---
+
+# 8. Dice roller entry
+
+1. The number of sides is entered in a field labeled "Faces:". It takes whole numbers of up to three digits, so the largest is 999.
+2. The smallest number of sides is 2. A number below 2, such as 0 or 1, is an invalid entry, and the warning "Invalid entry" shows.
+3. With "Faces:" empty, the roll is blocked and nothing happens.
+4. The number of dice is entered in a field labeled "Quantity:". It takes whole numbers of up to two digits, so the largest is 99.
+5. With "Quantity:" empty, a roll returns one number. A quantity of 0 blocks the roll, with no message.
+6. "Faces:" and "Quantity:" start blank, and so does the place where a roll's numbers are shown.
+
+---
+
+# 9. Screen
+
+1. The dice roller and the randomizer share one screen. The dice roller sits at the top, and a divider separates it from the randomizer below.
+2. The randomizer has a label field and a weight field in pairs, repeated for each item, with one submit button under all the pairs. Pressing it makes the pick in one step.
+3. The screen is built from the toy's cores and holds none of the toy's logic, so it can also serve as the toy's interface inside the curriculum app.

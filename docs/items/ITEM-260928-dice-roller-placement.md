@@ -13,4 +13,4 @@ The owner asked for dice-roller functionality alongside the randomizer. The requ
 The owner has decided, and the answer is recorded in a decision record.
 
 ## Resolution
-Closed 2026-09-28, by owner direction: the answer is recorded in [[DEC-260928-dice-roller-placement]].
+Closed 2026-09-28, by owner direction: the answer is recorded in [[randomizer§9]].
