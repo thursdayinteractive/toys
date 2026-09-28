@@ -18,6 +18,6 @@
     "resolveJsonModule": true,
     "noEmit": true
   },
-  "include": ["toys/**/*.ts", "toys/**/*.tsx", "tools/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "toys/**/*.ts", "toys/**/*.tsx", "tools/**/*.ts"],
   "exclude": ["node_modules"]
 }
