@@ -1,7 +1,7 @@
 ---
 id: ITEM-260928-architecture-simplification
 kind: task
-status: open
+status: closed
 queued: yes
 benchmark: bm-standalone-delivery
 ---
@@ -23,3 +23,6 @@ Storage and web versions left this item, by owner direction: each becomes an add
 
 ## Done when
 Each area has findings with evidence, and the owner has decided what changes.
+
+## Resolution
+Closed 2026-09-28, by owner direction. The owner accepted two sets of checker findings on the branch that carried this work, to be listed at its close-out: the frozen-record and spec-amendment findings from the approved in-place edits, and four commits whose `Refs:` lines named only records later deleted with approval. History is not rewritten for them.

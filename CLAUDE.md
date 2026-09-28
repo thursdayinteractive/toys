@@ -6,8 +6,6 @@ Start every session with [[PROC-260928-session-start]]. When the owner asks to c
 
 Each rule has an anchor, a tag, a reason and the clause it implements. `[conduct]` rules govern how the session works with the owner, `[review]` rules are listed in the close-out review, and `[check]` rules are verified by `npm run docs -- check` ([[DEC-260928-documentation-baseline#clause-41]]). Examples sit in marked blocks under their rules.
 
-Until [[ITEM-260928-architecture-simplification]] closes, foundational records are edited in place with the owner's approval, without amendments or supersessions (owner direction, 2026-09-28).
-
 ## Working with the owner
 
 - **rule-stop-and-surface.** [conduct] At the first sign of an unanticipated issue, a change to a foundational record, a step beyond or against what was approved, a conflict with a spec, decision or exception, a change of scope or order, or a merge conflict in a foundational file, stop and bring it to the owner before writing anything. Reason: a quick fix nobody vetted tends to cause the next problem. Implements [[DEC-260928-documentation-baseline#clause-31]].
