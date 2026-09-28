@@ -13,7 +13,7 @@ The turn tracker's screens ([[turn-tracker§4]]) were verified only by typecheck
 On an Android device and an iPhone, from a preview build:
 - the menu and the randomizer stay upright when the device is turned;
 - "Turn timer" and "Talk clicker" each turn the screen sideways, cover the header band, and the back arrow (and Android's back button) returns upright to the first screen;
-- the turn timer shows only "Start", then the time, then the dragon, with the back arrow at the bottom right; tapping the time or the dragon restarts at 0:00;
+- the turn timer shows only "Start", then the time, then the dragon, with the back arrow at the bottom left; tapping the time or the dragon restarts at 0:00;
 - the dragon starts at about 1.5 cm across, which rests on an assumed screen density; it flashes once a second from 2:30, speeding to five a second, and fills the screen at 3:00;
 - the screen does not dim or lock during a turn;
 - the talk clicker's four corners count separately, "Reset" and the back arrow sit clear of them in the middle, and leaving and reopening shows all zeros.

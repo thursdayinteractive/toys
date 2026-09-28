@@ -72,5 +72,5 @@ export function TurnTimer({ onBack }: TurnTimerProps): JSX.Element {
 const styles = StyleSheet.create({
   middle: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   time: { fontSize: TIME_FONT_SIZE, fontWeight: font.weight.bold, color: color.text, fontVariant: ['tabular-nums'] },
-  backCorner: { position: 'absolute', right: spacing.md, bottom: spacing.md },
+  backCorner: { position: 'absolute', left: spacing.md, bottom: spacing.md },
 });
