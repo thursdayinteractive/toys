@@ -17,6 +17,6 @@ Follow this at the start of every session ([[DEC-260928-documentation-baseline#c
    - List branches already merged (`git branch -r --merged origin/main`) for the owner to delete.
 4. **Switch to the session's branch** (assigned by the platform, or created from `main`). If it already holds commits `main` doesn't have, stop and surface them. Push it before the first commit, so other sessions can see it. Title the session "<the work> · <branch short name>".
 5. **Read in full:** `CLAUDE.md`, `docs/roadmap.md` and `docs/architecture/Architecture.md`, and for work on a toy, that toy's `docs/roadmap.md` and `docs/architecture/Architecture.md`.
-6. **Present the brief** ([[DEC-260928-documentation-baseline#clause-36]]), built by hand from the items and roadmaps until a checker exists. If it is over its cap, hand the list to the owner to cut.
+6. **Present the brief:** `npm run docs -- brief` ([[DEC-260928-documentation-baseline#clause-36]]). Run `npm install` first in a fresh clone. If the brief is over its cap, hand the list to the owner to cut.
 7. **Confirm the work with the owner.** When it is assigned, restate [[rule-stop-and-surface]].
 8. **Read on demand** the item being worked on and what it cites.

@@ -4,6 +4,12 @@ Small tools and toys by Thursday Interactive. Each one can run on its own as an 
 
 Each toy has its own folder under `toys/`, with its own code and documentation.
 
+## Commands
+
+- `npm install`: install the tools (TypeScript).
+- `npm run typecheck`, `npm test`: check the code.
+- `npm run docs -- check`: check the documentation. `npm run docs -- brief`: print the session-start brief.
+
 ## Where things are
 
 - `CLAUDE.md`: the rules every working session follows.

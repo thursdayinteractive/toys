@@ -1,0 +1,14 @@
+{
+  "name": "toys",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node --import ./tools/register-test-loader.mjs --test",
+    "typecheck": "tsc --noEmit",
+    "docs": "node --import ./tools/register-test-loader.mjs tools/docs/cli.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "typescript": "^7.0.2"
+  }
+}

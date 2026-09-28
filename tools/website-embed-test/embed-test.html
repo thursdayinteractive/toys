@@ -1,0 +1,40 @@
+<!-- Thursday Interactive toys: website embed test.
+     Paste this whole block into a GoDaddy embed section, publish or preview,
+     and report the lines it shows. It changes nothing outside its own box. -->
+<div id="ti-embed-test" style="font-family: sans-serif; padding: 12px; border: 2px solid #204153;">
+  <strong>Toys embed test</strong>
+  <ol id="ti-embed-results"><li class="ti-css-check">CSS: if this line is NOT dark red, embedded CSS does not apply.</li></ol>
+</div>
+<style>
+  #ti-embed-test .ti-css-check { color: #9E382C; }
+</style>
+<script>
+(function () {
+  var list = document.getElementById('ti-embed-results');
+  function line(label, value) {
+    var li = document.createElement('li');
+    li.textContent = label + ': ' + value;
+    list.appendChild(li);
+  }
+  line('1. Inline JavaScript', 'runs');
+  var framed;
+  try { framed = window.self !== window.top; } catch (e) { framed = true; }
+  line('2. Inside a frame', framed ? 'yes' : 'no');
+  line('3. Frame size', window.innerWidth + ' x ' + window.innerHeight + ' pixels');
+  var storage;
+  try { localStorage.setItem('ti-test', '1'); storage = localStorage.getItem('ti-test') === '1' ? 'available' : 'not working'; localStorage.removeItem('ti-test'); }
+  catch (e) { storage = 'blocked (' + e.name + ')'; }
+  line('4. Browser storage', storage);
+  line('5. Secure random numbers', (window.crypto && window.crypto.getRandomValues) ? 'available' : 'missing');
+  var ext = document.createElement('script');
+  ext.src = 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js';
+  ext.onload = function () { line('6. Script hosted elsewhere', typeof window._ === 'function' ? 'loads' : 'loaded but did not run'); };
+  ext.onerror = function () { line('6. Script hosted elsewhere', 'blocked'); };
+  document.head.appendChild(ext);
+})();
+</script>
+<script type="module">
+  var li = document.createElement('li');
+  li.textContent = '7. Module scripts: run';
+  document.getElementById('ti-embed-results').appendChild(li);
+</script>

@@ -14,6 +14,7 @@ The standalone app is the first host for every toy ([[DEC-260928-roadmap-phasing
 - **clause-1.** **One app for all toys.** The standalone app is a single store-distributed app containing every toy ([[§7 item 1]]). A single-toy app risks rejection as too little functionality, and one app per toy risks rejection as spam.
 - **clause-2.** **Expo and React Native.** The app uses the same stack as the curriculum app, so its toy screens can later serve as the add-on's interface.
 - **clause-3.** **The website version is separate.** Each toy's website version is a single plain JavaScript file of its core and a small web interface, not a web export of the standalone app, which would be far heavier than an embed needs ([[§7 item 2]]).
+- **clause-4.** **Where the app lives.** The app's own files are at the top of the repository, as the curriculum app's are. Each toy keeps its own folder under `toys/`, from which it supplies its screens (owner direction, 2026-09-28).
 
 ## Options considered
 
