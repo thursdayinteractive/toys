@@ -1,7 +1,7 @@
 ---
 id: ITEM-260928-randomizer-product-page
 kind: task
-status: open
+status: closed
 queued: yes
 verified: n/a
 ---
@@ -11,3 +11,6 @@ The randomizer has no product page. Product pages describe current behavior and 
 
 ## Done when
 `toys/randomizer/docs/product/` holds a page describing the randomizer's current behavior, one anchored entry per behavior, and the documentation checks pass.
+
+## Resolution
+Closed 2026-09-28, by owner direction: the page is `toys/randomizer/docs/product/randomizer.md`.
