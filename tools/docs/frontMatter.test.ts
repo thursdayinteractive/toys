@@ -12,15 +12,16 @@ test('parseFields reports duplicates, empties and malformed lines', () => {
 });
 
 test('a valid task passes', () => {
-  const f = fields('id: ITEM-260101-x\nkind: task\nstatus: open\nverified: none\nbenchmark: bm-x');
+  const f = fields('id: ITEM-260101-x\nkind: task\nstatus: open\nbenchmark: bm-x');
   assert.deepEqual(validateFields('ITEM', 'ITEM-260101-x', f), []);
 });
 
-test('item rules: blocked, parked, task verification, benchmark prefix', () => {
+test('item rules: blocked, removed statuses and fields, benchmark prefix', () => {
   const v = (block: string) => validateFields('ITEM', 'ITEM-260101-x', fields('id: ITEM-260101-x\n' + block));
   assert.ok(v('kind: decision\nstatus: blocked').some((e) => e.includes('blocked_on')));
-  assert.ok(v('kind: decision\nstatus: parked').some((e) => e.includes('branch or pr')));
-  assert.ok(v('kind: task\nstatus: open').some((e) => e.includes('verified')));
+  assert.ok(v('kind: decision\nstatus: parked').some((e) => e.includes('status must be')));
+  assert.ok(v('kind: plan\nstatus: open').some((e) => e.includes('kind must be')));
+  assert.ok(v('kind: task\nstatus: open\nverified: none').some((e) => e.includes('unknown')));
   assert.ok(v('kind: decision\nstatus: open\nbenchmark: x').some((e) => e.includes('bm-')));
 });
 

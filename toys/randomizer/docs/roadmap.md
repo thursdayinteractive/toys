@@ -1,13 +1,13 @@
 # Randomizer roadmap
 
 ## Now
-Phase 1: Cores and standalone. Stage: not started.
-Active: none.
+Phase 1: Cores and standalone. Stage: the toy in the standalone app.
+Active: [[bm-randomizer-standalone]].
 
 ## Phase 1: Cores and standalone
-Scope: The randomizer and dice roller cores, and the toy in the standalone app. Not in this phase: temporary removal of items, and storage.
-- **bm-randomizer-core.** The randomizer core is built to [[randomizer§1]]–[[randomizer§4]] and tested with a fixed randomness source. Status: not started.
-- **bm-dice-roller-core.** The dice roller core is built to [[randomizer§5]] and tested with a fixed randomness source. Status: not started.
+Scope: The randomizer and dice roller cores, saved lists, and the toy in the standalone app. Not in this phase: temporary removal of items.
+- **bm-randomizer-core.** The randomizer core is built to [[randomizer§1]]–[[randomizer§4]] and tested with a fixed randomness source. Status: done.
+- **bm-dice-roller-core.** The dice roller core is built to [[randomizer§5]] and tested with a fixed randomness source. Status: done.
 - **bm-randomizer-standalone.** The randomizer and dice roller are usable in the standalone app. Status: not started.
 
 ## Phase 2: Website

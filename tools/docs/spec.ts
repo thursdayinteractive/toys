@@ -58,6 +58,14 @@ export function newAmendments(base: Model | null, head: Model): string[] {
   return tokens;
 }
 
+/** The folder of the repository spec's addenda. */
+export const ADDENDA = 'docs/architecture/addenda/';
+
+/** The amends: token that covers an addendum: `addenda/<file name without .md>`. */
+export function addendumToken(path: string): string {
+  return 'addenda/' + path.slice(ADDENDA.length).replace(/\.md$/, '');
+}
+
 /** Whether an amendment token (`§3`, `randomizer§3.1`) covers a section of a spec. */
 export function covers(token: string, specPrefix: string, section: string): boolean {
   const m = /^([a-z0-9-]*)§(\d+(?:\.\d+)*)$/.exec(token);
