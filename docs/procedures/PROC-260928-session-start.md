@@ -5,7 +5,7 @@ governance: yes
 
 # Session start
 
-Read this first, every session ([[DEC-260928-documentation-baseline#clause-61]]). Several sessions may be running at once, each on its own branch, so the goal of steps 1–2 is to account for every other line of work cheaply, by asking rather than diffing, and to investigate only what the owner can't account for.
+Read this first, every session ([[DEC-260928-documentation-baseline#clause-59]]). Several sessions may be running at once, each on its own branch, so the goal of steps 1–2 is to account for every other line of work cheaply, by asking rather than diffing, and to investigate only what the owner can't account for.
 
 1. **Read this procedure.**
 2. **Git hygiene and branch triage.**
@@ -15,9 +15,9 @@ Read this first, every session ([[DEC-260928-documentation-baseline#clause-61]])
    - **Other branches with their own commits** and no open pull request: if one is recorded by a `parked` item, it's known, parked work. Otherwise name it to the owner with its last commit's date and subject (`git log -1 --format='%ad %s' <branch>`) and ask whether it's live, parked or abandoned. Live: leave it alone. Parked: record it as a `parked` item. Abandoned or unknown: only then investigate, and if it touched `docs/` or `CLAUDE.md`, reconcile with the owner before continuing.
 3. **Branch and title.** Switch to the session's own branch: the one the platform assigned (cloud), or a new one created from `main` (local). If it already exists and holds commits `main` doesn't have, stop and surface them; otherwise bring it level with `git merge --ff-only main`. Push it with no commit, so other sessions can see it. Title the session "<what the work is> · <branch short name>", where the short name is the branch name without its prefix and random suffix (`thursday/nifty-rubin-3c347h` → "nifty-rubin").
 4. **Read in full:** `CLAUDE.md`, `docs/roadmap.md` and `docs/architecture/Architecture.md`.
-5. **Present the brief.** Until the checker exists, assemble it by hand from the items' front matter, in the parts [[DEC-260928-documentation-baseline#clause-56]] lists. If it is over its cap, say so and hand the list to the owner, who decides the triage.
+5. **Present the brief.** Until the checker exists, assemble it by hand from the items' front matter, in the parts [[DEC-260928-documentation-baseline#clause-54]] lists. If it is over its cap, say so and hand the list to the owner, who decides the triage.
 6. **Confirm the work with the owner.**
 7. **When implementation starts** (a plan is approved or work is assigned), restate [[rule-stop-and-surface]] in the acknowledgement.
-8. **Read on demand:** the item being worked on, and what it cites.
+8. **Read on demand:** the item being worked on, and what it cites. For work on a toy, also read in full that toy's `docs/roadmap.md` and `docs/architecture/Architecture.md`.
 
 **Limits.** A session is invisible to others until its branch is pushed. The owner's assignment is what prevents duplicate work; work in flight is not a lock.

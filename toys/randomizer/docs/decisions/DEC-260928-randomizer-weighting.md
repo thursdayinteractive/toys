@@ -11,11 +11,11 @@ The first tool is a randomizer. The person enters a list of items and the random
 
 ## Clauses
 
-- **clause-1.** **Multipliers, not percentages.** The person enters a weighting multiplier for each item, for example 1, 1.2 or 2.0. Each item's chance is derived from the multipliers ([[§4.2]]), so the chances always total 100%.
+- **clause-1.** **Multipliers, not percentages.** The person enters a weighting multiplier for each item, for example 1, 1.2 or 2.0. Each item's chance is derived from the multipliers ([[randomizer§2]]), so the chances always total 100%.
 - **clause-2.** **Decimals.** Multipliers accept decimal values.
-- **clause-3.** **Temporary removal needs no reweighting.** Because chances are derived from the multipliers of the items still in play ([[§4.3]]), removing an item needs no change to any other item's weight.
-- **clause-4.** **Lists start empty.** Storage comes later ([[§7]]).
-- **clause-5.** **Dice roller.** A dice roller takes a number of sides as a simple numeric input ([[§5]]).
+- **clause-3.** **Temporary removal needs no reweighting.** Because chances are derived from the multipliers of the items still in play ([[randomizer§3]]), removing an item needs no change to any other item's weight.
+- **clause-4.** **Lists start empty.** Storage comes later ([[randomizer§6]]).
+- **clause-5.** **Dice roller.** A dice roller takes a number of sides as a simple numeric input ([[randomizer§5]]).
 
 ## Options considered
 
