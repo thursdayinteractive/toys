@@ -15,6 +15,7 @@ The dice roller's input rules were open ([[ITEM-260928-dice-roller-input-rules]]
 - **clause-2.** **Smallest.** The smallest number of sides is 2.
 - **clause-3.** **Largest.** The field holds three digits, so the largest number of sides is 999.
 - **clause-4.** **Empty.** With the field empty, rolling does nothing.
+- **clause-5.** **Too few sides.** A number of sides below 2, such as 0 or 1, is an invalid entry, and the host shows the warning "Invalid entry".
 
 ## Options considered
 
