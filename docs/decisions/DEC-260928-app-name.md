@@ -1,6 +1,6 @@
 ---
 id: DEC-260928-app-name
-status: proposed
+status: accepted
 ---
 
 # The standalone app's name, identifier and builds

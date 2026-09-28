@@ -1,6 +1,6 @@
 ---
 id: DEC-260928-roguelore-branding
-status: proposed
+status: accepted
 ---
 
 # RogueLore colors and icons
