@@ -1,6 +1,6 @@
 ---
 id: DEC-260928-randomizer-weighting
-status: proposed
+status: accepted
 ---
 
 # Randomizer weighting, lists, and the dice roller

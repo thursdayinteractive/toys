@@ -1,6 +1,6 @@
 ---
 id: DEC-260928-documentation-baseline
-status: proposed
+status: accepted
 ---
 
 # Documentation baseline

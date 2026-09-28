@@ -1,6 +1,6 @@
 ---
 id: DEC-260928-randomizer-spec
-status: proposed
+status: accepted
 ---
 
 # The first randomizer spec

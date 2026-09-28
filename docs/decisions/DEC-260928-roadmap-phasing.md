@@ -1,6 +1,6 @@
 ---
 id: DEC-260928-roadmap-phasing
-status: proposed
+status: accepted
 ---
 
 # Host order

@@ -1,6 +1,6 @@
 ---
 id: DEC-260928-architecture-baseline
-status: proposed
+status: accepted
 ---
 
 # The first architecture spec and add-on compatibility

@@ -1,6 +1,6 @@
 ---
 id: DEC-260928-website-hosting
-status: proposed
+status: accepted
 ---
 
 # Where the toys' website scripts are hosted

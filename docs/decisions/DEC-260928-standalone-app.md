@@ -1,6 +1,6 @@
 ---
 id: DEC-260928-standalone-app
-status: proposed
+status: accepted
 ---
 
 # The standalone app and the website version
