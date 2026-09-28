@@ -2,5 +2,6 @@
 
 import type { Toy } from './toy';
 import { randomizer } from '../toys/randomizer';
+import { turnTracker } from '../toys/turn-tracker';
 
-export const toys: readonly Toy[] = [randomizer];
+export const toys: readonly Toy[] = [randomizer, turnTracker];
