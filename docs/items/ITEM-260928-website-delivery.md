@@ -7,7 +7,9 @@ benchmark: bm-website-delivery
 ---
 # How the toys are delivered on ThursdayInteractive.com
 
-Each toy's website version is a single JavaScript file ([[DEC-260928-standalone-app#clause-3]]), placed through the site's embed ([[fact-website-hosting]]), which runs inside a frame ([[fact-website-embed-frame]]). Not yet known: whether an embed can load a script file hosted elsewhere, and any limit on its size. Not yet decided: whether the file is pasted into the embed or hosted elsewhere and loaded by it.
+Each toy's website version is a single JavaScript file ([[DEC-260928-standalone-app#clause-3]]), placed through the site's embed. The test embed ([[PROC-260928-website-embed-test]]) found that embeds run in a frame ([[fact-website-embed-frame]]), can load a script hosted on another site ([[fact-website-embed-capabilities]]), and are cut off somewhere below 100 KB ([[fact-website-embed-size]]).
+
+Not yet decided: where a toy's script file is hosted, for the embed to load it. Not yet known: whether the frame grows when a toy's content grows after it loads, or clips it.
 
 ## Done when
-The test embed ([[PROC-260928-website-embed-test]]) has answered the unknowns, the answers are recorded as facts, and the delivery route is decided in a decision record.
+The hosting location is decided in a decision record, and a toy's embed loads its hosted script on the site.
