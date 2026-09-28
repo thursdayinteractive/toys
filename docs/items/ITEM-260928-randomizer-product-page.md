@@ -12,4 +12,4 @@ The randomizer has no product page. Product pages describe current behavior and 
 `toys/randomizer/docs/product/` holds a page describing the randomizer's current behavior, one anchored entry per behavior, and the documentation checks pass.
 
 ## Resolution
-Closed 2026-09-28, by owner direction: the page is `toys/randomizer/docs/product/randomizer.md`.
+Closed 2026-09-28, by owner direction: the page is `toys/randomizer/docs/product/randomizer.md`. Later folded into the toy's guide, by owner direction, 2026-09-28.
