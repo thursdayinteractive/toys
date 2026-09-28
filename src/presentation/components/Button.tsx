@@ -8,14 +8,18 @@ import { color, font, radius, spacing } from '../tokens';
 export interface ButtonProps {
   readonly label: string;
   readonly onPress: () => void;
+  /** Dimmed and not pressable while true. */
+  readonly disabled?: boolean;
 }
 
-export function Button({ label, onPress }: ButtonProps): JSX.Element {
+export function Button({ label, onPress, disabled = false }: ButtonProps): JSX.Element {
   return (
     <Pressable
-      style={({ pressed }) => [styles.button, pressed ? styles.pressed : null]}
+      style={({ pressed }) => [styles.button, pressed || disabled ? styles.dimmed : null]}
       onPress={onPress}
+      disabled={disabled}
       accessibilityRole="button"
+      accessibilityState={{ disabled }}
     >
       <Text style={styles.label}>{label}</Text>
     </Pressable>
@@ -31,6 +35,6 @@ const styles = StyleSheet.create({
     borderRadius: radius.md,
     marginTop: spacing.xs,
   },
-  pressed: { opacity: 0.7 },
+  dimmed: { opacity: 0.7 },
   label: { fontSize: font.size.base, fontWeight: font.weight.bold, color: color.surface },
 });
