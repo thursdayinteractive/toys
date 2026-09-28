@@ -25,7 +25,7 @@ This repository holds small tools and toys. Each toy runs on its own as an app, 
 ### Layout
 
 - **clause-6.** **Repository layout.**
-  - Top level: `CLAUDE.md`, `README.md`, `docs/`, `toys/`, `tools/`, and `scratch/` (never committed).
+  - Top level: `CLAUDE.md`, `README.md`, `docs/`, `toys/`, `tools/`, `scratch/` (never committed), and the standalone app's own files.
   - `tools/` holds the project's own scripts: `tools/docs/` for the documentation checker, and the test runner's import hook at `tools/` itself.
   - `docs/` holds what all toys share: `roadmap.md`, `architecture/Architecture.md`, `architecture/exceptions/`, `decisions/`, `items/`, `procedures/`, `facts/<area>.md`, `product/<subject>.md` and `guide/User_Guide.md`.
   - Work items live in the repository, not in an external tracker.
@@ -56,7 +56,7 @@ This repository holds small tools and toys. Each toy runs on its own as an app, 
   - `benchmark`, when the item serves one.
 
   The body says what is needed and when it is done. A decision item holds the question; its draft answer is a proposed decision record.
-- **clause-18.** **Plans.** A plan is an item with `kind: plan`. It holds the process reasoning for a piece of work and is reduced to a short stub when closed.
+- **clause-18.** **Plans.** A plan is an item with `kind: plan`. It holds the process reasoning for a piece of work. When closed, it is reduced to a short stub that names the commit holding the full plan.
 - **clause-19.** **Closing.** An item is closed or dropped only with the owner's explicit yes, and is never deleted.
 
 ### Facts, product pages and guides
@@ -100,7 +100,7 @@ This repository holds small tools and toys. Each toy runs on its own as an app, 
 ### Checks
 
 - **clause-40.** **What is checked.** Citations resolve to live targets; names and anchors are unique; front matter is valid; frozen records are unchanged except in their appended sections; spec changes are covered by amendments; caps hold; no conflict markers; nothing cites `scratch/`; user sections carry no internal names; commits carry `Refs:` lines; every `CLAUDE.md` rule has a tag; closed plans are stubs.
-- **clause-41.** **How it is checked.** By a checker, once one exists. Until then, the session carries out the clause-40 checks by hand at close-out and states which it carried out and what it found.
+- **clause-41.** **How it is checked.** By the documentation checker, `npm run docs -- check`, which also prints the brief (`npm run docs -- brief`). A check the checker cannot run is carried out by hand at close-out, and the session says which.
 
 ## Options considered
 

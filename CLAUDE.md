@@ -4,7 +4,7 @@ Start every session with [[PROC-260928-session-start]]. When the owner asks to c
 
 **Every toy stays usable as a curriculum app add-on** ([[rule-add-on-compatible]]).
 
-Each rule has an anchor, a tag, a reason and the clause it implements. `[conduct]` rules govern how the session works with the owner, `[review]` rules are listed in the close-out review, and `[check]` rules are verified mechanically, by hand until a checker exists ([[DEC-260928-documentation-baseline#clause-41]]). Examples sit in marked blocks under their rules.
+Each rule has an anchor, a tag, a reason and the clause it implements. `[conduct]` rules govern how the session works with the owner, `[review]` rules are listed in the close-out review, and `[check]` rules are verified by `npm run docs -- check` ([[DEC-260928-documentation-baseline#clause-41]]). Examples sit in marked blocks under their rules.
 
 ## Working with the owner
 
