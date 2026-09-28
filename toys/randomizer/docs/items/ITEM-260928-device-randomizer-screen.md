@@ -17,3 +17,4 @@ On an Android device and an iPhone, from a preview build:
 - "Invalid entry" shows for faces of 0 or 1, and for a weight of only a decimal point;
 - the list starts with two rows; trash icons appear only with three or more; chances update as weights change;
 - the screen scrolls with the keyboard open, and fields are not hidden behind it.
+- a saved list is still there after the app is closed and reopened; opening, replacing and deleting it work; the title field stops at 14 characters.
