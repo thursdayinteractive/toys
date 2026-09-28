@@ -12,6 +12,7 @@ A weight field must let the person type a lone decimal point on the way to an en
 ## Clauses
 
 - **clause-1.** **A lone decimal point is invalid.** A weight field holding only a decimal point is an invalid entry, and the host shows the warning "Invalid entry". An entry with digits on either side of the point is a decimal: ".5" is 0.5 and "3." is 3.
+- **clause-2.** **Submission blocked.** While any weight field holds an invalid entry, the warning shows and the pick is not made.
 
 ## Options considered
 
