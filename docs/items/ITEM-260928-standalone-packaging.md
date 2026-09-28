@@ -1,7 +1,7 @@
 ---
 id: ITEM-260928-standalone-packaging
 kind: decision
-status: open
+status: closed
 queued: no
 benchmark: bm-standalone-delivery
 ---
@@ -11,3 +11,6 @@ The standalone app is the first host for every toy ([[DEC-260928-roadmap-phasing
 
 ## Done when
 The owner has accepted the decision record.
+
+## Resolution
+Closed 2026-09-28, by owner direction: the owner accepted [[DEC-260928-standalone-app]].
