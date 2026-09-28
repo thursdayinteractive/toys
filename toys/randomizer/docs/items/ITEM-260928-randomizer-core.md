@@ -1,7 +1,7 @@
 ---
 id: ITEM-260928-randomizer-core
 kind: task
-status: open
+status: closed
 queued: yes
 verified: n/a
 benchmark: bm-randomizer-core
@@ -12,3 +12,6 @@ Items with a label and a decimal multiplier, chances derived from the multiplier
 
 ## Done when
 Tests with a fixed randomness source show each chance matching [[randomizer§2]], chances totaling 100%, and picks landing on the expected items.
+
+## Resolution
+Closed 2026-09-28, by owner direction: the core and its tests are in `toys/randomizer/core/`.
