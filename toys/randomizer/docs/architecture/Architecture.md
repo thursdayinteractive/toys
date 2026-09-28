@@ -87,8 +87,8 @@ A new list starts with two rows, so the person sees how a list works. Saving goe
 1. The dice roller and the randomizer share one screen. The dice roller sits at the top, and a divider separates it from the randomizer below.
 2. The randomizer has a label field and a weight field in pairs, repeated for each item, with one submit button under all the pairs. Pressing it makes the pick in one step.
 3. The screen is built from the toy's cores and holds none of the toy's logic, so it can also serve as the toy's interface inside the curriculum app.
-4. The dice roller: "Faces:" and "Quantity:" side by side with a "Roll" button beside them. The numbers rolled show on one line below, separated by commas. "Invalid entry" shows under the fields, in the warning text color.
+4. The dice roller: "Faces:" and "Quantity:" side by side with a "Roll" button beside them. The numbers rolled show on one line, separated by commas, in a large centered result space above the fields. "Invalid entry" shows in that space, in the warning text color.
 5. Each item row: a label field with the hint "Item", a weight field with the hint "1.0", and the item's chance at the right. Two blank rows are two items, each 50%.
 6. A trash icon on each row deletes it. The icons are hidden while only two rows remain, so the list never has fewer than two. An "+ Add item" button sits under the rows.
-7. The submit button reads "Randomize". The picked item's label shows below it, or "No viable options remain.", or "Invalid entry".
-8. Before a roll's numbers or a pick's result appear, a die icon spins for one second where the result will show. The button that started it is disabled until the result appears.
+7. The submit button reads "Randomize". The picked item's label shows in a large centered result space above the item rows, or "No viable options remain.", or "Invalid entry".
+8. Before a roll's numbers or a pick's result appear, a large die icon spins for one second in the result space. The button that started it is disabled until the result appears.
