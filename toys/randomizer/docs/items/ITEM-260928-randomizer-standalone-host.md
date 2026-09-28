@@ -1,11 +1,9 @@
 ---
 id: ITEM-260928-randomizer-standalone-host
 kind: task
-status: blocked
-queued: no
-phase: 1
+status: open
+queued: yes
 benchmark: bm-randomizer-standalone
-blocked_on: the standalone app existing, ITEM-260928-standalone-app-shell
 ---
 # Put the randomizer in the standalone app
 
