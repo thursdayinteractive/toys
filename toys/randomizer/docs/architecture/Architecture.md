@@ -41,7 +41,7 @@ A pick returns one item from the active set, chosen with the chances in [[random
 
 # 5. Dice roller
 
-A die has a number of sides, entered as a number. A roll returns a whole number from 1 to that number, each equally likely, using one value from the host's randomness source.
+A die has a number of sides, entered as a number. A roll is of one or more dice with the same number of sides. For each die it returns a whole number from 1 to that number, each equally likely, using one value from the host's randomness source. The numbers are returned individually, not totaled.
 
 ---
 
