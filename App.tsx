@@ -3,12 +3,17 @@
 
 import { useState, type JSX } from 'react';
 import { Platform, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import * as ScreenOrientation from 'expo-screen-orientation';
 import { deviceStorage } from './src/deviceStorage';
 import type { Toy } from './src/toy';
 import { toys } from './src/toys';
 import { ToyFrame } from './src/presentation/ToyFrame';
 import { ToyMenu } from './src/presentation/ToyMenu';
 import { color } from './src/presentation/tokens';
+
+// The app is upright; a toy screen that needs to turn sideways locks it
+// while open and puts it back.
+void ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
 
 export default function App(): JSX.Element {
   const [open, setOpen] = useState<Toy | null>(null);
