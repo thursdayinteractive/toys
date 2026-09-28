@@ -16,6 +16,10 @@ export type ChancesResult =
   | { readonly kind: 'chances'; readonly chances: readonly number[] }
   | NoViableOptions;
 
+export type MultiplierEntryResult =
+  | { readonly kind: 'multiplier'; readonly multiplier: number }
+  | { readonly kind: 'invalid-entry' };
+
 export type PickResult =
   | { readonly kind: 'picked'; readonly index: number }
   | NoViableOptions;
@@ -48,15 +52,11 @@ export function pick(activeSet: readonly Item[], random: number): PickResult {
   if (total === 0) return NO_VIABLE_OPTIONS;
   const target = random * total;
   let running = 0;
-  let lastViable = 0;
-  for (const [index, item] of activeSet.entries()) {
-    if (item.multiplier === 0) continue;
+  const index = activeSet.findIndex((item) => {
     running += item.multiplier;
-    lastViable = index;
-    if (target < running) return { kind: 'picked', index };
-  }
-  // Reached only if random is not below 1, which [[§5]] rules out.
-  return { kind: 'picked', index: lastViable };
+    return item.multiplier > 0 && target < running;
+  });
+  return { kind: 'picked', index };
 }
 
 /** Chance as a percentage to two decimal places ([[DEC-260928-randomizer-input-rules#clause-5]]). */
@@ -70,4 +70,15 @@ export function formatChance(chance: number): string {
  */
 export function isMultiplierEntry(text: string): boolean {
   return /^\d*(\.\d?)?$/.test(text);
+}
+
+/**
+ * The multiplier a weight field's text gives. An empty field gives 1.0
+ * ([[DEC-260928-randomizer-input-rules#clause-1]]); a lone decimal point is an invalid
+ * entry ([[DEC-260928-randomizer-invalid-entry#clause-1]]).
+ */
+export function multiplierFromEntry(text: string): MultiplierEntryResult {
+  if (text === '') return { kind: 'multiplier', multiplier: 1 };
+  if (text === '.' || !isMultiplierEntry(text)) return { kind: 'invalid-entry' };
+  return { kind: 'multiplier', multiplier: Number(text) };
 }

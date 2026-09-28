@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { chances, formatChance, isMultiplierEntry, pick, type Item } from './randomizer';
+import { chances, formatChance, isMultiplierEntry, multiplierFromEntry, pick, type Item } from './randomizer';
 
 const items = (...multipliers: number[]): Item[] =>
   multipliers.map((multiplier, i) => ({ label: `item ${i}`, multiplier }));
@@ -85,4 +85,15 @@ test('the weight field holds digits with at most one decimal place and no minus 
   for (const text of ['-1', '-', '1.25', '1..2', '1.2.', 'a', '1a', ' 1', '1,2']) {
     assert.equal(isMultiplierEntry(text), false, text);
   }
+});
+
+test('the weight field text gives its multiplier, 1.0 when empty', () => {
+  const cases: [string, number][] = [['', 1], ['0', 0], ['2', 2], ['1.2', 1.2], ['.5', 0.5], ['3.', 3], ['0.0', 0]];
+  for (const [text, multiplier] of cases) {
+    assert.deepEqual(multiplierFromEntry(text), { kind: 'multiplier', multiplier }, text);
+  }
+});
+
+test('a lone decimal point is an invalid entry', () => {
+  assert.deepEqual(multiplierFromEntry('.'), { kind: 'invalid-entry' });
 });
