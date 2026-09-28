@@ -109,3 +109,7 @@ None. The structure follows owner direction, 2026-09-28.
 ## Precept conflicts resolved
 
 None.
+
+## Supersessions
+
+- The phrase "follow vetting for changes many parts depend on" in clause-34 is superseded by [[DEC-260928-vetting-on-request]]: vetting is run only when the owner asks. The rest of clause-34 stands.
