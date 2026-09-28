@@ -13,10 +13,11 @@ The randomizer and the dice roller are separate cores in this toy ([[DEC-260928-
 
 - **clause-1.** **On the randomizer's screen.** The dice roller is part of the randomizer's screen, not a toy of its own.
 - **clause-2.** **At the top.** The dice roller sits at the top of the screen, for easy viewing. A divider separates it from the randomizer below it.
-- **clause-3.** **"Dice Faces".** The dice roller's number of sides is entered in a field labeled "Dice Faces".
+- **clause-3.** **"Faces:".** The dice roller's number of sides is entered in a field labeled "Faces:".
 
 ## Options considered
 
+- **The label "Dice Faces".** The owner's first answer, 2026-09-28. Lost: by owner direction, the label is "Faces:".
 - **The dice roller as its own toy.** Lost: by owner direction, it sits on the randomizer's screen.
 - **The dice roller below the randomizer.** The owner's first answer, 2026-09-28. Lost: by owner direction, it moved to the top for easy viewing.
 
