@@ -20,5 +20,5 @@ export function SpinningDie(): JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  die: { width: 32, height: 32 },
+  die: { width: 64, height: 64 },
 });

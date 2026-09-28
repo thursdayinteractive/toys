@@ -22,6 +22,8 @@ type Shown = { readonly kind: 'none' } | { readonly kind: 'spinning' } | { reado
 
 const NONE: Shown = { kind: 'none' };
 const MIN_ROWS = 2;
+const RESULT_AREA_HEIGHT = 96;
+const RESULT_FONT_SIZE = 32;
 
 /** The rows as items, or null when any weight field holds an invalid entry. */
 function itemsOf(rows: readonly Row[]): Item[] | null {
@@ -48,10 +50,16 @@ function useSpinThenShow(): [Shown, (text: string) => void, (shown: Shown) => vo
   return [shown, spinThenShow, setShown];
 }
 
-function ResultLine({ shown, warning }: { shown: Shown; warning?: boolean }): JSX.Element | null {
-  if (shown.kind === 'none') return null;
-  if (shown.kind === 'spinning') return <SpinningDie />;
-  return <Text style={[styles.result, warning === true ? styles.warning : null]}>{shown.text}</Text>;
+/** A fixed-height, centered space where a result, the spinning die or a warning shows. */
+function ResultArea({ shown, warning }: { shown: Shown; warning?: boolean }): JSX.Element {
+  return (
+    <View style={styles.resultArea}>
+      {shown.kind === 'spinning' ? <SpinningDie /> : null}
+      {shown.kind === 'text' ? (
+        <Text style={warning === true ? styles.warning : styles.result}>{shown.text}</Text>
+      ) : null}
+    </View>
+  );
 }
 
 export function RandomizerScreen(): JSX.Element {
@@ -103,6 +111,7 @@ export function RandomizerScreen(): JSX.Element {
 
   return (
     <ScrollView keyboardShouldPersistTaps="handled">
+      <ResultArea shown={diceWarning ? { kind: 'text', text: 'Invalid entry' } : diceShown} warning={diceWarning} />
       <View style={styles.diceRow}>
         <Text style={styles.fieldLabel}>Faces:</Text>
         <TextInput
@@ -124,9 +133,10 @@ export function RandomizerScreen(): JSX.Element {
         />
         <Button label="Roll" onPress={onRoll} disabled={diceShown.kind === 'spinning'} />
       </View>
-      {diceWarning ? <Text style={[styles.result, styles.warning]}>Invalid entry</Text> : <ResultLine shown={diceShown} />}
 
       <View style={styles.divider} />
+
+      <ResultArea shown={pickShown} warning={pickWarning} />
 
       {rows.map((row, index) => (
         <View key={row.key} style={styles.itemRow}>
@@ -169,7 +179,6 @@ export function RandomizerScreen(): JSX.Element {
       <View style={styles.randomize}>
         <Button label="Randomize" onPress={onRandomize} disabled={pickShown.kind === 'spinning'} />
       </View>
-      <ResultLine shown={pickShown} warning={pickWarning} />
     </ScrollView>
   );
 }
@@ -188,8 +197,9 @@ const styles = StyleSheet.create({
     color: color.text,
   },
   diceField: { width: 56, marginRight: spacing.sm },
-  result: { fontSize: font.size.lg, fontWeight: font.weight.bold, color: color.text, marginTop: spacing.sm },
-  warning: { fontSize: font.size.base, color: color.destructiveText },
+  resultArea: { minHeight: RESULT_AREA_HEIGHT, alignItems: 'center', justifyContent: 'center', marginBottom: spacing.sm },
+  result: { fontSize: RESULT_FONT_SIZE, fontWeight: font.weight.bold, color: color.text, textAlign: 'center' },
+  warning: { fontSize: font.size.lg, color: color.destructiveText, textAlign: 'center' },
   divider: { borderTopWidth: 1, borderTopColor: color.divider, marginVertical: spacing.md },
   itemRow: { flexDirection: 'row', alignItems: 'center', marginBottom: spacing.sm },
   labelField: { flex: 1, marginRight: spacing.sm },
