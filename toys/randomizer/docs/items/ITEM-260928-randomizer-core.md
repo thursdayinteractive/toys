@@ -2,7 +2,7 @@
 id: ITEM-260928-randomizer-core
 kind: task
 status: open
-queued: no
+queued: yes
 verified: n/a
 benchmark: bm-randomizer-core
 ---

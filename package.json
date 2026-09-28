@@ -2,6 +2,7 @@
   "name": "toys",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "test": "node --import ./tools/register-test-loader.mjs --test",
     "typecheck": "tsc --noEmit",
