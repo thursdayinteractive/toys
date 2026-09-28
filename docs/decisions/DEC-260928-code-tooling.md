@@ -1,6 +1,6 @@
 ---
 id: DEC-260928-code-tooling
-status: proposed
+status: accepted
 ---
 
 # Code tooling matches the curriculum app

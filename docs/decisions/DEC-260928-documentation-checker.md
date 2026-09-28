@@ -1,6 +1,6 @@
 ---
 id: DEC-260928-documentation-checker
-status: proposed
+status: accepted
 ---
 
 # A documentation checker is built
