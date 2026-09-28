@@ -19,7 +19,7 @@ The dice roller's input rules were open ([[ITEM-260928-dice-roller-input-rules]]
 - **clause-6.** **Blank to start.** The "Faces:" and "Quantity:" fields start blank, and so does the place where a roll's numbers are shown.
 - **clause-7.** **Quantity.** The number of dice ([[DEC-260928-several-dice]]) is entered in a field labeled "Quantity:". It is a two-digit whole-number field, so the largest quantity is 99.
 - **clause-8.** **Empty quantity.** With the "Quantity:" field empty, a roll returns one number.
-- **clause-9.** **Zero quantity.** A quantity of 0 blocks the roll.
+- **clause-9.** **Zero quantity.** A quantity of 0 blocks the roll, with no message.
 
 ## Options considered
 
