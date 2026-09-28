@@ -15,7 +15,7 @@ This repository holds small tools and toys. Each toy runs on its own as an app, 
 
 - **clause-1.** **One home per fact.** Each fact is written once and cited everywhere else.
 - **clause-2.** **Three kinds of content.**
-  - Foundational records set direction: `CLAUDE.md`, the specs, decision records, exceptions, governance procedures, and roadmap phase scopes and benchmark definitions. They change only by owner approval.
+  - Foundational records set direction: `CLAUDE.md`, the specs, addenda, decision records, exceptions, governance procedures, and roadmap phase scopes and benchmark definitions. They change only by owner approval.
   - Working state records where things stand: item fields, roadmap status lines, facts and guides. It is edited in place.
   - History is git.
 - **clause-3.** **Permanent names.** Records are named `<PREFIX>-<yymmdd>-<name>` with the prefixes `DEC` (decision), `EXC` (exception), `ITEM` (work item) and `PROC` (procedure). Anchors in other files use `bm-` (benchmark), `fact-`, `prod-` (an entry saying what exists now) and `rule-`. Names and anchors are unique across the repository and never reused. Nothing is cited by file position or line number.
@@ -27,14 +27,14 @@ This repository holds small tools and toys. Each toy runs on its own as an app, 
 - **clause-6.** **Repository layout.**
   - Top level: `CLAUDE.md`, `README.md`, `docs/`, `toys/`, `tools/`, `scratch/` (never committed), and the standalone app's own files.
   - `tools/` holds the project's own scripts: `tools/docs/` for the documentation checker, and the test runner's import hook at `tools/` itself.
-  - `docs/` holds what all toys share: `roadmap.md`, `architecture/Architecture.md`, `architecture/exceptions/`, `decisions/`, `items/`, `procedures/`, `facts/<area>.md` and `guide/User_Guide.md`.
+  - `docs/` holds what all toys share: `roadmap.md`, `architecture/Architecture.md`, `architecture/addenda/`, `architecture/exceptions/`, `decisions/`, `items/`, `procedures/`, `facts/<area>.md` and `guide/User_Guide.md`.
   - Work items live in the repository, not in an external tracker.
 - **clause-7.** **Two tiers.** The repository's documents (`CLAUDE.md`, this baseline, the repository spec, roadmap, decisions, items, procedures and facts) are the top tier: they cover what every toy shares and never cite or name an individual toy. Each toy has its own folder, `toys/<toy>/`, holding its code and its own `docs/`: its spec at `architecture/Architecture.md`, its one guide page at `guide/User_Guide.md`, its `roadmap.md` and its `items/`. A toy's documents cite up to the top tier, never across to another toy.
 
 ### Specs
 
 - **clause-8.** **What a spec is.** A spec states the intended design. The repository spec holds what every toy follows; each toy's spec holds that toy's design and meets the repository spec.
-- **clause-9.** **Self-contained.** A spec cites only its own sections. The one exception is the repository spec's pointer to the curriculum app's architecture, in its add-on compatibility section, which is plain text rather than a citation.
+- **clause-9.** **Self-contained.** A spec cites only its own sections. The exceptions are the repository spec's pointer to the curriculum app's architecture, in its add-on compatibility section, and its pointer to its addenda, both plain text rather than citations.
 - **clause-10.** **No status.** A spec carries no status, history or open questions. Open questions are items.
 - **clause-11.** **Stable sections.** Section numbers are anchors. Sections are never renumbered or removed; a section no longer needed is emptied, with a plain sentence saying where its content went.
 - **clause-12.** **Amendments.** A toy's spec is the one home for that toy's behavior and is edited in place with the owner's approval. Once accepted, the repository spec changes only through a decision clause carrying `amends: [§N, …]` (or `amends: [<toy>§N, …]`) that covers every changed section.
@@ -100,6 +100,10 @@ This repository holds small tools and toys. Each toy runs on its own as an app, 
 
 - **clause-40.** **What is checked.** Citations resolve to live targets; names and anchors are unique; front matter is valid; frozen records are unchanged except in their appended sections; spec changes are covered by amendments; no conflict markers; nothing cites `scratch/`; user sections carry no internal names; commits carry `Refs:` lines; every `CLAUDE.md` rule has a tag.
 - **clause-41.** **How it is checked.** By the documentation checker, `npm run docs -- check`, which also prints the brief (`npm run docs -- brief`). A check the checker cannot run is carried out by hand at close-out, and the session says which.
+
+### Addenda
+
+- **clause-42.** **Addenda.** The repository spec is the baseline. A shared capability it does not set is added as an addendum: a separate top-tier document in `docs/architecture/addenda/`, one per capability, to which the spec points ([[§8]]). The first toy that needs the capability sets it, once its solution works, and every later toy follows it. Nothing is written for a need no toy has yet. An accepted addendum is foundational and changes like the repository spec ([[DEC-260928-documentation-baseline#clause-12]]).
 
 ## Options considered
 

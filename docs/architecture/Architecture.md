@@ -63,3 +63,9 @@ A toy that keeps anything between uses does so through one small storage interfa
 1. **Standalone.** One store-distributed app contains every toy. It is built with Expo and React Native. Each toy supplies its screens to the app from its own folder; the app holds no toy's logic.
 2. **Website.** Each toy's website version is one plain JavaScript file: its core and a small web interface. It is placed on the site through the site's embed, which runs it inside a frame. It is not built from the standalone app.
 3. **Curriculum app.** Each toy's core is added to the curriculum app as [[§3]] describes. How its interface is added there is not yet designed.
+
+---
+
+# 8. Addenda
+
+This spec is the baseline. A capability it does not set, such as storage or web versions, is added as an addendum in `docs/architecture/addenda/`, one document per capability. The first toy that needs the capability sets it, once its solution works, and every later toy follows it. No addendum is written for a need no toy has yet. None exist yet.
