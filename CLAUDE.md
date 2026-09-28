@@ -39,7 +39,7 @@ The documentation checker is disabled until it is rewritten, so `[check]` rules 
 
 ## Vetting
 
-- **rule-vetting-directive.** [conduct] A change follows [[PROC-260928-vetting]] only when the owner asks for it. Every other change is planned directly and brought to the owner for approval. Reason: full vetting is sized for a large app, and these toys are small. Implements [[DEC-260928-vetting-on-request]].
+- **rule-vetting-directive.** [conduct] A change follows [[PROC-260928-vetting]] only when the owner asks for it. Every other change is planned directly and brought to the owner for approval. Reason: full vetting is sized for a large app, and these toys are small. Implements [[DEC-260928-documentation-baseline#clause-34]].
 - **rule-check-existing-mechanisms.** [conduct] Before accepting that something needs new machinery, search the code for a mechanism that already does the job. Reason: an existing mechanism is the simpler solution by definition. Implements [[DEC-260928-documentation-baseline#clause-34]].
   > **Example.** Before adding a new flag to a core's data, check whether an existing field or rule already expresses it.
 - **rule-dont-open-by-declaring.** [conduct] Open a design change by proposing to look at what it touches, not by announcing a large build. Reason: the scope comes from what discovery finds. Implements [[DEC-260928-documentation-baseline#clause-34]].
@@ -56,10 +56,10 @@ The documentation checker is disabled until it is rewritten, so `[check]` rules 
 
 - **rule-code-comments.** [review] Code comments cite spec sections and decision or exception records only: no paths, positions, items or roadmap lines. Reason: code outlives the documents' layout. Implements [[DEC-260928-documentation-baseline#clause-25]].
 - **rule-qualifiers-in-code.** [review] A claim in code that rests on something unverified says so, and the question is tracked as an item. Reason: the qualifier keeps a guess from reading as fact. Implements [[DEC-260928-documentation-baseline#clause-26]].
-- **rule-product-and-guide-current.** [review] Product pages change with behavior, and guides with anything user-visible. Reason: they describe what exists now. Implements [[DEC-260928-documentation-baseline#clause-21]] and [[DEC-260928-documentation-baseline#clause-22]].
+- **rule-product-and-guide-current.** [review] A toy's guide changes with behavior and with anything user-visible. Reason: they describe what exists now. Implements [[DEC-260928-documentation-baseline#clause-21]] and [[DEC-260928-documentation-baseline#clause-22]].
 - **rule-refs-tags.** [check] Every non-merge commit names a record or benchmark on a `Refs:` line. Reason: `Refs:` lines are how history is searched. Implements [[DEC-260928-documentation-baseline#clause-27]].
 - **rule-citations.** [check] Citations use only the forms below and resolve; names and anchors are unique; front matter is valid. Reason: an unresolved citation is a broken pointer. Implements [[DEC-260928-documentation-baseline#clause-24]] and [[DEC-260928-documentation-baseline#clause-40]].
-- **rule-frozen-records.** [check] Accepted decisions and exceptions change only in their appended sections, and spec changes match an `amends:` list. Reason: a record edited to match the code can no longer catch drift. Implements [[DEC-260928-documentation-baseline#clause-12]] and [[DEC-260928-documentation-baseline#clause-14]].
+- **rule-frozen-records.** [check] Accepted decisions and exceptions change only in their appended sections, and repository spec changes match an `amends:` list. Reason: a record edited to match the code can no longer catch drift. Implements [[DEC-260928-documentation-baseline#clause-12]] and [[DEC-260928-documentation-baseline#clause-14]].
 - **rule-no-conflict-markers.** [check] No conflict markers anywhere, and nothing cites `scratch/`. Reason: nothing else scans documents for them. Implements [[DEC-260928-documentation-baseline#clause-40]].
 - **rule-user-text.** [check] Guide sections for people using the toys carry no internal names. Reason: they are read outside the project. Implements [[DEC-260928-documentation-baseline#clause-22]].
 - **rule-rule-tags.** [check] Every rule here has a tag. Reason: an untagged rule has no way to be enforced. Implements [[DEC-260928-documentation-baseline#clause-30]].
@@ -76,7 +76,7 @@ The documentation checker is disabled until it is rewritten, so `[check]` rules 
 | `[[PROC-<yymmdd>-<name>]]` | a procedure | [[PROC-260928-vetting]] |
 | `[[bm-<name>]]` | a roadmap benchmark | [[bm-repository-foundation]] |
 | `[[fact-<name>]]` | a fact | [[fact-toys-repository]] |
-| `[[prod-<name>]]` | a product page entry | `[[prod-example]]` |
+| `[[prod-<name>]]` | an entry in a toy's guide saying what exists now | `[[prod-example]]` |
 | `[[rule-<name>]]` | a rule in this file | [[rule-stop-and-surface]] |
 | `[[§<section>]]` | a repository spec section | [[§2]] |
 | `[[§<section> item <n>]]` | a numbered item in a repository spec section | [[§3 item 1]] |
