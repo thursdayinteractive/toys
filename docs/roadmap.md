@@ -3,6 +3,7 @@
 ## Now
 Phase 1: Foundation and standalone. Stage: repository setup.
 Active: [[bm-repository-foundation]].
+Queue order: [[ITEM-260928-code-tooling]], then [[ITEM-260928-randomizer-input-rules]], then [[ITEM-260928-randomizer-core]].
 
 ## Phase 1: Foundation and standalone
 Scope: The documentation system, the code tooling, and the route by which any toy is delivered as a standalone app ([[DEC-260928-roadmap-phasing#clause-1]]). Not in this phase: website and curriculum app delivery.
