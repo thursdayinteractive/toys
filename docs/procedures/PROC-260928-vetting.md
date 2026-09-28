@@ -5,7 +5,7 @@ governance: yes
 
 # Vetting a change many parts depend on
 
-Use this for a change to a core type shape, or to a mechanism several parts depend on ([[rule-vetting-directive]]). Discovery comes before design. The conduct rules for every step are [[rule-facts-not-direction]], [[rule-running-is-not-solving]], [[rule-narration-lags-work]], [[rule-check-existing-mechanisms]], [[rule-dont-open-by-declaring]] and [[rule-reporting-standard]].
+Use this when the owner asks for it ([[rule-vetting-directive]]). Discovery comes before design. The conduct rules for every step are [[rule-facts-not-direction]], [[rule-running-is-not-solving]], [[rule-narration-lags-work]], [[rule-check-existing-mechanisms]], [[rule-dont-open-by-declaring]] and [[rule-reporting-standard]].
 
 ## Discovery
 

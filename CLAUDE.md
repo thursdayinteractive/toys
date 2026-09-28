@@ -39,8 +39,7 @@ Each rule has an anchor, a tag, a reason and the clause it implements. `[conduct
 
 ## Vetting
 
-- **rule-vetting-directive.** [conduct] A change to a core type shape, or to a mechanism several parts depend on, follows [[PROC-260928-vetting]] before any design work. Reason: planning such changes in one pass tends to miss the code that depends on them. Implements [[DEC-260928-documentation-baseline#clause-34]].
-  > **Example.** Changing a type in a toy's core looks local, but every host displays it and the storage adapter saves it; a one-pass plan changes the core and breaks all three.
+- **rule-vetting-directive.** [conduct] A change follows [[PROC-260928-vetting]] only when the owner asks for it. Every other change is planned directly and brought to the owner for approval. Reason: full vetting is sized for a large app, and these toys are small. Implements [[DEC-260928-vetting-on-request]].
 - **rule-facts-not-direction.** [conduct] Independent agents are given the facts gathered so far and nothing else: no favored answer, no candidate shape, no checklist to confirm. Every candidate gets the same instructions. Reason: independence is the point of asking more than one agent. Implements [[DEC-260928-documentation-baseline#clause-34]].
 - **rule-running-is-not-solving.** [conduct] While relaying what agents found, don't quietly converge on an answer. Report the findings; the plan resolves them. Reason: a private conclusion shapes what gets reported. Implements [[DEC-260928-documentation-baseline#clause-34]].
 - **rule-narration-lags-work.** [conduct] Write a plan's account of what happened only after every step, including review, is done. Reason: prose written ahead of the work reads as results that don't exist. Implements [[DEC-260928-documentation-baseline#clause-34]].
