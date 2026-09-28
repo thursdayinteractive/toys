@@ -43,7 +43,7 @@ The toys are designed first as standalone tools and are not led by the curriculu
 
 # 4. Toy layout
 
-Each toy lives in its own folder, with its own core, its own hosts and its own documentation. A toy's design is its own spec, which meets this one. Toys do not depend on one another.
+Each toy lives in its own folder, with its own core, its own interface for each host, and its own documentation. A toy's design is its own spec, which meets this one. Toys do not depend on one another.
 
 ---
 
@@ -56,3 +56,11 @@ A host supplies each non-deterministic input a core needs through an adapter ([[
 # 6. Storage
 
 A toy that keeps anything between uses does so through a storage adapter ([[§2]]) behind one interface, and its core does not change.
+
+---
+
+# 7. Hosts
+
+1. **Standalone.** One store-distributed app contains every toy. It is built with Expo and React Native. Each toy supplies its screens to the app from its own folder; the app holds no toy's logic.
+2. **Website.** Each toy's website version is one plain JavaScript file: its core and a small web interface. It is placed on the site through the site's embed, which runs it inside a frame. It is not built from the standalone app.
+3. **Curriculum app.** Each toy's core is added to the curriculum app as [[§3]] describes. How its interface is added there is not yet designed.

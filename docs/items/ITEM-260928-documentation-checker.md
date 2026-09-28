@@ -8,7 +8,7 @@ benchmark: bm-repository-foundation
 ---
 # Build the documentation checker
 
-A checker is to be built ([[DEC-260928-documentation-baseline#clause-41]], [[DEC-260928-documentation-checker]]). Not yet decided: what it covers, of the checks in [[DEC-260928-documentation-baseline#clause-40]] and the brief in [[DEC-260928-documentation-baseline#clause-36]], and where its code lives, since the layout in [[DEC-260928-documentation-baseline#clause-6]] has no place for tools yet.
+A checker is to be built in `tools/docs/`, running every documentation check and building the brief ([[DEC-260928-documentation-checker]]). Until it exists, the checks are done by hand ([[DEC-260928-documentation-baseline#clause-41]]).
 
 ## Done when
-The owner has set its scope and location, and it runs those checks clean on the repository.
+`npm run docs -- check` runs every check in [[DEC-260928-documentation-baseline#clause-40]] clean on the repository, and `npm run docs -- brief` prints the brief.
