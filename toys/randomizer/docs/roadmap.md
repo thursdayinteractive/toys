@@ -1,8 +1,8 @@
 # Randomizer roadmap
 
 ## Now
-Phase 1: Cores and standalone. Stage: randomizer core done.
-Active: none.
+Phase 1: Cores and standalone. Stage: the toy in the standalone app.
+Active: [[bm-randomizer-standalone]].
 
 ## Phase 1: Cores and standalone
 Scope: The randomizer and dice roller cores, saved lists, and the toy in the standalone app. Not in this phase: temporary removal of items.
