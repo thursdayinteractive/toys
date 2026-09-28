@@ -2,7 +2,7 @@
 id: ITEM-260928-standalone-app-shell
 kind: task
 status: open
-queued: no
+queued: yes
 benchmark: bm-standalone-delivery
 ---
 # Build the standalone app
