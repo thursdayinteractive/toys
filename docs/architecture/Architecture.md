@@ -29,7 +29,7 @@ A host builds a toy's interface from that toy's core. A host holds none of the t
 
 # 3. Add-on compatibility
 
-A toy's core must be usable inside the curriculum app without change. The reference for compatibility is the curriculum app's architecture, in the `thursdayinteractive/curriculum-app` repository at `docs/architecture/Architecture.md`. Its layer map and platform split are what a core must fit. This is the only place the toys' documentation points to it. To that end:
+A toy's core must be usable inside the curriculum app without change. The reference for compatibility is the curriculum app's architecture, in the `thursdayinteractive/curriculum-app` repository at `docs/architecture/Architecture.md`. Its layer map and platform split are what a core must fit. To that end:
 
 1. The core is written in TypeScript, with no platform imports and no UI.
 2. The core has no runtime dependencies. A dependency added later must also be one the curriculum app can take.

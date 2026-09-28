@@ -29,7 +29,7 @@ This repository holds small tools and toys. Each toy runs on its own as an app, 
   - `tools/` holds the project's own scripts: `tools/docs/` for the documentation checker, and the test runner's import hook at `tools/` itself.
   - `docs/` holds what all toys share: `roadmap.md`, `architecture/Architecture.md`, `architecture/exceptions/`, `decisions/`, `items/`, `procedures/`, `facts/<area>.md` and `guide/User_Guide.md`.
   - Work items live in the repository, not in an external tracker.
-- **clause-7.** **Toy folders.** Each toy has its own folder, `toys/<toy>/`, holding its code, its spec at `docs/architecture/Architecture.md` and its one guide page at `docs/guide/User_Guide.md`. A toy's items, decisions and roadmap lines are kept at repository level, which may name toys.
+- **clause-7.** **Two tiers.** The repository's documents (`CLAUDE.md`, this baseline, the repository spec, roadmap, decisions, items, procedures and facts) are the top tier: they cover what every toy shares and never cite or name an individual toy. Each toy has its own folder, `toys/<toy>/`, holding its code and its own `docs/`: its spec at `architecture/Architecture.md`, its one guide page at `guide/User_Guide.md`, its `roadmap.md` and its `items/`. A toy's documents cite up to the top tier, never across to another toy.
 
 ### Specs
 
