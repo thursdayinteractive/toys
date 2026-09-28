@@ -18,7 +18,7 @@ The owner accepted these, 2026-09-28. Done: vetting only on request ([[DEC-26092
 - the checker rewritten for what remains.
 
 ## Findings
-- **One set of screens, local test, 2026-09-28.** A throwaway app on the curriculum app's stack (Expo 57, React Native 0.86, React 19.2.3), holding one small list screen built on a toy core, was exported for the web. The export is one ordinary script of 347 KB, 103 KB when gzipped. Loaded inside a frame by an ordinary `<script src>` from a second local origin, as a website embed would load it ([[DEC-260928-website-hosting#clause-2]]), it rendered and ran. Not yet tested: on the site itself, which needs the hosting set up ([[ITEM-260928-website-hosting-setup]]); and whether the host serves it compressed (an inference, unverified).
+- **One set of screens, local test, 2026-09-28.** A throwaway app on the curriculum app's stack (Expo 57, React Native 0.86, React 19.2.3), holding one small list screen built on a toy core, was exported for the web. The export is one ordinary script of 347 KB, 103 KB when gzipped. Loaded inside a frame by an ordinary `<script src>` from a second local origin, as a website embed would load it ([[DEC-260928-website-hosting#clause-2]]), it rendered and ran. Not yet tested: on the site itself, which needs the hosting set up ([[ITEM-260928-website-hosting-setup]]); and whether the host serves it compressed (an inference, unverified). By owner direction, the repository spec is not changed on this until it has run on the site: the architecture records what is proven, not what is expected.
 
 ## Done when
 Each area has findings with evidence, and the owner has decided what changes.
