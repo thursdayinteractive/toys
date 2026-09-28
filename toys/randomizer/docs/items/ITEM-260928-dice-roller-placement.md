@@ -1,7 +1,7 @@
 ---
 id: ITEM-260928-dice-roller-placement
 kind: decision
-status: open
+status: closed
 queued: no
 benchmark: bm-randomizer-standalone
 ---
@@ -11,3 +11,6 @@ The owner asked for dice-roller functionality alongside the randomizer. The requ
 
 ## Done when
 The owner has decided, and the answer is recorded in a decision record.
+
+## Resolution
+Closed 2026-09-28, by owner direction: the answer is recorded in [[DEC-260928-dice-roller-placement]].
