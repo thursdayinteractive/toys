@@ -24,9 +24,9 @@ test('unique-names: an anchor defined twice fails', () => {
 });
 
 test('front-matter: record errors and bad fact dates fail', () => {
-  const head = { ...BASE_FILES, 'docs/items/ITEM-260101-x.md': '---\nid: ITEM-260101-x\nkind: task\nstatus: open\n---\n# X\n', 'docs/facts/y.md': '- **fact-y.** Y. (verified: soon)\n' };
+  const head = { ...BASE_FILES, 'docs/items/ITEM-260101-x.md': '---\nid: ITEM-260101-x\nkind: plan\nstatus: open\n---\n# X\n', 'docs/facts/y.md': '- **fact-y.** Y. (verified: soon)\n' };
   const found = run('front-matter', head);
-  assert.ok(found.some((f) => f.message.includes('verified')) && found.some((f) => f.path === 'docs/facts/y.md'));
+  assert.ok(found.some((f) => f.message.includes('kind')) && found.some((f) => f.path === 'docs/facts/y.md'));
   assert.equal(run('front-matter', { ...BASE_FILES, 'docs/items/ITEM-260101-y.md': '# no header\n' }).length, 1);
 });
 
@@ -58,11 +58,28 @@ test('spec-amendments: a change needs a new amends: list covering it', () => {
   assert.ok(run('spec-amendments', { ...BASE_FILES, 'docs/architecture/Architecture.md': renumbered }).some((f) => f.message.includes('removed')));
 });
 
-test('caps: an item body over 400 words fails, a plan does not', () => {
-  const long = Array(401).fill('word').join(' ');
-  const item = (kind: string) => `---\nid: ITEM-260101-x\nkind: ${kind}\nstatus: open\nverified: n/a\n---\n${long}\n`;
-  assert.equal(run('caps', { ...BASE_FILES, 'docs/items/ITEM-260101-x.md': item('task') }).length, 1);
-  assert.deepEqual(run('caps', { ...BASE_FILES, 'docs/items/ITEM-260101-x.md': item('plan') }), []);
+test('spec-amendments: a toy spec is edited in place, an addendum needs its own amends token', () => {
+  const toySpec = 'toys/demo/docs/architecture/Architecture.md';
+  const base = { ...BASE_FILES, [toySpec]: SPEC };
+  assert.deepEqual(run('spec-amendments', { ...base, [toySpec]: SPEC.replace('Text.', 'Changed.') }, base), []);
+  const addendum = 'docs/architecture/addenda/storage.md';
+  const withAddendum = { ...BASE_FILES, [addendum]: '# Storage\n\nOne interface.\n' };
+  const edited = { ...withAddendum, [addendum]: '# Storage\n\nTwo interfaces.\n' };
+  assert.equal(run('spec-amendments', edited, withAddendum).length, 1);
+  const amendment = '---\nid: DEC-260103-store\nstatus: proposed\n---\n# Store\n\n- **clause-1.** Two.\n  amends: [addenda/storage]\n';
+  assert.deepEqual(run('spec-amendments', { ...edited, 'docs/decisions/DEC-260103-store.md': amendment }, withAddendum), []);
+});
+
+test('tiers: the repository tier cites no toy, and a toy cites no other toy', () => {
+  const toys = {
+    ...BASE_FILES,
+    'toys/demo/docs/architecture/Architecture.md': SPEC,
+    'toys/demo/docs/roadmap.md': '# Demo\n\n- **bm-demo.** Demo. Status: not started.\n',
+    'toys/other/docs/architecture/Architecture.md': SPEC,
+  };
+  assert.deepEqual(run('tiers', { ...toys, 'toys/demo/docs/guide/User_Guide.md': 'See ' + cite('demo§1') + ', ' + cite('bm-demo') + ' and ' + cite('§1') + '.\n' }), []);
+  assert.equal(run('tiers', { ...toys, 'docs/facts/x.md': 'See ' + cite('demo§1') + ' and ' + cite('bm-demo') + '.\n' }).length, 2);
+  assert.equal(run('tiers', { ...toys, 'toys/other/docs/guide/User_Guide.md': 'See ' + cite('demo§1') + '.\n' }).length, 1);
 });
 
 test('conflict-markers and scratch', () => {
@@ -86,9 +103,6 @@ test('refs-lines: each branch commit needs a resolving Refs: token', () => {
   assert.equal(runCheck('refs-lines', c, []).length, 2);
 });
 
-test('rule-tags and plan-stubs', () => {
+test('rule-tags', () => {
   assert.equal(run('rule-tags', { ...BASE_FILES, 'CLAUDE.md': '- **rule-x.** No tag.\n' }).length, 1);
-  const plan = (body: string) => `---\nid: ITEM-260101-p\nkind: plan\nstatus: closed\n---\n# Plan\n\n${body}\n`;
-  assert.equal(run('plan-stubs', { ...BASE_FILES, 'docs/items/ITEM-260101-p.md': plan('Done.') }).length, 1);
-  assert.deepEqual(run('plan-stubs', { ...BASE_FILES, 'docs/items/ITEM-260101-p.md': plan('Full plan at 1a2b3c4.') }), []);
 });

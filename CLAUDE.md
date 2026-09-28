@@ -6,7 +6,7 @@ Start every session with [[PROC-260928-session-start]]. When the owner asks to c
 
 Each rule has an anchor, a tag, a reason and the clause it implements. `[conduct]` rules govern how the session works with the owner, `[review]` rules are listed in the close-out review, and `[check]` rules are verified by `npm run docs -- check` ([[DEC-260928-documentation-baseline#clause-41]]). Examples sit in marked blocks under their rules.
 
-The documentation checker is disabled until it is rewritten, so `[check]` rules are checked by hand at close-out. Until [[ITEM-260928-architecture-simplification]] closes, foundational records are edited in place with the owner's approval, without amendments or supersessions (owner direction, 2026-09-28).
+Until [[ITEM-260928-architecture-simplification]] closes, foundational records are edited in place with the owner's approval, without amendments or supersessions (owner direction, 2026-09-28).
 
 ## Working with the owner
 
@@ -58,7 +58,7 @@ The documentation checker is disabled until it is rewritten, so `[check]` rules 
 - **rule-qualifiers-in-code.** [review] A claim in code that rests on something unverified says so, and the question is tracked as an item. Reason: the qualifier keeps a guess from reading as fact. Implements [[DEC-260928-documentation-baseline#clause-26]].
 - **rule-product-and-guide-current.** [review] A toy's guide changes with behavior and with anything user-visible. Reason: they describe what exists now. Implements [[DEC-260928-documentation-baseline#clause-21]] and [[DEC-260928-documentation-baseline#clause-22]].
 - **rule-refs-tags.** [check] Every non-merge commit names a record or benchmark on a `Refs:` line. Reason: `Refs:` lines are how history is searched. Implements [[DEC-260928-documentation-baseline#clause-27]].
-- **rule-citations.** [check] Citations use only the forms below and resolve; names and anchors are unique; front matter is valid. Reason: an unresolved citation is a broken pointer. Implements [[DEC-260928-documentation-baseline#clause-24]] and [[DEC-260928-documentation-baseline#clause-40]].
+- **rule-citations.** [check] Citations use only the forms below and resolve; the repository tier cites no toy, and a toy cites no other toy; names and anchors are unique; front matter is valid. Reason: an unresolved citation is a broken pointer. Implements [[DEC-260928-documentation-baseline#clause-7]], [[DEC-260928-documentation-baseline#clause-24]] and [[DEC-260928-documentation-baseline#clause-40]].
 - **rule-frozen-records.** [check] Accepted decisions and exceptions change only in their appended sections, and changes to the repository spec and its addenda match an `amends:` list. Reason: a record edited to match the code can no longer catch drift. Implements [[DEC-260928-documentation-baseline#clause-12]] and [[DEC-260928-documentation-baseline#clause-14]].
 - **rule-no-conflict-markers.** [check] No conflict markers anywhere, and nothing cites `scratch/`. Reason: nothing else scans documents for them. Implements [[DEC-260928-documentation-baseline#clause-40]].
 - **rule-user-text.** [check] Guide sections for people using the toys carry no internal names. Reason: they are read outside the project. Implements [[DEC-260928-documentation-baseline#clause-22]].

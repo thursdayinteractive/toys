@@ -98,7 +98,7 @@ This repository holds small tools and toys. Each toy runs on its own as an app, 
 
 ### Checks
 
-- **clause-40.** **What is checked.** Citations resolve to live targets; names and anchors are unique; front matter is valid; frozen records are unchanged except in their appended sections; spec changes are covered by amendments; no conflict markers; nothing cites `scratch/`; user sections carry no internal names; commits carry `Refs:` lines; every `CLAUDE.md` rule has a tag.
+- **clause-40.** **What is checked.** Citations resolve to live targets; the repository tier cites no toy, and a toy cites no other toy; names and anchors are unique; front matter is valid; frozen records are unchanged except in their appended sections; changes to the repository spec and its addenda are covered by amendments; no conflict markers; nothing cites `scratch/`; user sections carry no internal names; commits carry `Refs:` lines; every `CLAUDE.md` rule has a tag.
 - **clause-41.** **How it is checked.** By the documentation checker, `npm run docs -- check`, which also prints the brief (`npm run docs -- brief`). A check the checker cannot run is carried out by hand at close-out, and the session says which.
 
 ### Addenda
