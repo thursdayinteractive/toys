@@ -3,7 +3,7 @@
 ## Now
 Phase 1: Foundation and standalone. Stage: repository setup.
 Active: [[bm-standalone-delivery]].
-Queue order: none.
+Queue order: [[ITEM-260928-architecture-simplification]].
 
 ## Phase 1: Foundation and standalone
 Scope: The documentation system, the code tooling, and the route by which any toy is delivered as a standalone app ([[DEC-260928-roadmap-phasing#clause-1]]). Not in this phase: website and curriculum app delivery.
