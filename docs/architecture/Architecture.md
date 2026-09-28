@@ -30,12 +30,12 @@ A host builds a toy's interface from that toy's core. A host holds none of the t
 
 # 3. Add-on compatibility
 
-A toy's core must be usable inside the curriculum app without change. To that end:
+A toy's core must be usable inside the curriculum app without change. The reference for compatibility is the curriculum app's architecture, in the `thursdayinteractive/curriculum-app` repository at `docs/architecture/Architecture.md`. Its layer map and platform split are what a core must fit. This is the only place the toys' documentation points to it. To that end:
 
-1. The core is written in TypeScript and meets the curriculum app's rule for its engine layers: no platform imports and no UI.
+1. The core is written in TypeScript, with no platform imports and no UI.
 2. The core has no runtime dependencies. A dependency added later must also be one the curriculum app can take.
 3. The core's public surface is plain data in and plain data out. It passes no callbacks into a host and holds no host objects.
-4. Non-deterministic inputs enter as described in [[§5]], the same way the curriculum app injects them into its engine.
+4. Non-deterministic inputs enter as described in [[§5]].
 
 The toys are designed first as standalone tools and are not led by the curriculum app's architecture. This section is the whole of the constraint that app places on them.
 

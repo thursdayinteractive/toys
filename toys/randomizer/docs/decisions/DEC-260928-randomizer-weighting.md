@@ -21,10 +21,6 @@ The first tool is a randomizer. The person enters a list of items and the random
 
 - **Entered percentages that must total 100%.** Lost: by owner direction, a multiplier is entered and the percentages follow. With multipliers, the total cannot be wrong, and temporary removal does not break it.
 
-## Comparison and review files
-
-None. The clauses come from owner direction in conversation, 2026-09-28.
-
 ## Precept conflicts resolved
 
 None found.
