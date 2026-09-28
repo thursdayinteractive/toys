@@ -1,15 +1,14 @@
 ---
 id: ITEM-260928-documentation-checker
-kind: decision
+kind: task
 status: open
 queued: no
+verified: n/a
 benchmark: bm-repository-foundation
 ---
-# Whether to build a documentation checker
+# Build the documentation checker
 
-No checker exists, so the `[check]` rules, the brief and the close-out review are done by hand ([[DEC-260928-documentation-baseline#clause-41]]). A checker would verify citations, front matter, frozen records, caps and `Refs:` lines, and build the brief.
-
-Owner question: build a checker, and if so how much of [[DEC-260928-documentation-baseline#clause-40]] it covers, or keep the hand checks.
+A checker is to be built ([[DEC-260928-documentation-baseline#clause-41]], [[DEC-260928-documentation-checker]]). Not yet decided: what it covers, of the checks in [[DEC-260928-documentation-baseline#clause-40]] and the brief in [[DEC-260928-documentation-baseline#clause-36]], and where its code lives, since the layout in [[DEC-260928-documentation-baseline#clause-6]] has no place for tools yet.
 
 ## Done when
-The owner has decided, and the answer is recorded as a decision record.
+The owner has set its scope and location, and it runs those checks clean on the repository.
