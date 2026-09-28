@@ -9,7 +9,7 @@ governance: yes
 
 **Checking against what's already decided.** Every candidate is checked for internal soundness (does it break a consumer, a test, a hand-traced case) and, separately, for consistency with what's already decided. Steps 2 and 11 do the second, using the spec and the four precepts ([[rule-precepts]]) — deliberately kept separate from consumer and test correctness, and deliberately narrow: broader sources create their own risk of misinterpretation rather than reducing it.
 
-The conduct rules that govern every step are in `CLAUDE.md`: [[rule-facts-not-direction]], [[rule-running-is-not-solving]], [[rule-narration-lags-work]], [[rule-check-existing-mechanisms]], [[rule-dont-open-by-declaring]], and the reporting standard, [[rule-reporting-standard]]. Steps are both numbered and named, so references survive renumbering ([[DEC-260928-documentation-baseline#clause-47]]).
+The conduct rules that govern every step are in `CLAUDE.md`: [[rule-facts-not-direction]], [[rule-running-is-not-solving]], [[rule-narration-lags-work]], [[rule-check-existing-mechanisms]], [[rule-dont-open-by-declaring]], and the reporting standard, [[rule-reporting-standard]]. Steps are both numbered and named, so references survive renumbering ([[DEC-260928-documentation-baseline#clause-46]]).
 
 ## Discovery
 
@@ -39,5 +39,5 @@ The conduct rules that govern every step are in `CLAUDE.md`: [[rule-facts-not-di
 
 ## Mechanics
 
-- **Records.** Every step's output is committed and pushed as it is produced, in a temporary folder on the session's branch. Plan mode can't come first, because it blocks commits; exiting plan mode is the gate before any building. The temporary records are removed before merge, once the reasoning they hold is carried into the plan and, for any decision that persists, into its decision record ([[DEC-260928-documentation-baseline#clause-50]]).
-- **Build stages.** After each stage, report what changed, which checks ran and what they returned, and every departure from the plan — or "none", checked against the stage's diff. A departure stops the work ([[DEC-260928-documentation-baseline#clause-48]]).
+- **Records.** Every step's output is committed and pushed as it is produced, in a temporary folder on the session's branch. Plan mode can't come first, because it blocks commits; exiting plan mode is the gate before any building. The temporary records are removed before merge, once the reasoning they hold is carried into the plan and, for any decision that persists, into its decision record ([[DEC-260928-documentation-baseline#clause-49]]).
+- **Build stages.** After each stage, report what changed, which checks ran and what they returned, and every departure from the plan — or "none", checked against the stage's diff. A departure stops the work ([[DEC-260928-documentation-baseline#clause-47]]).
