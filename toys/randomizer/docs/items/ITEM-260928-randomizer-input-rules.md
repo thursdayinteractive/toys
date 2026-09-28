@@ -2,7 +2,7 @@
 id: ITEM-260928-randomizer-input-rules
 kind: decision
 status: open
-queued: no
+queued: yes
 benchmark: bm-randomizer-core
 ---
 # Randomizer input rules
