@@ -15,6 +15,10 @@ Lists were to start empty, with storage later and outside Phase 1 (clause-4 of [
   amends: [randomizer§6]
 - **clause-2.** **One list for now, room for more.** One saved list is enough for now. Saved lists are kept as an array of titled lists, so more can be kept later without changing how a list is saved.
 - **clause-3.** **Phase 1.** Saving a list is part of Phase 1, delivered with the toy in the standalone app.
+- **clause-4.** **Saving.** A save button saves the list.
+- **clause-5.** **Loading.** A saved list is loaded by choosing it from a list of saved lists.
+- **clause-6.** **Titles.** A title cannot be blank, and is at most 14 characters long.
+- **clause-7.** **Deleting.** A saved list can be deleted.
 
 ## Options considered
 
