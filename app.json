@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "RL Toys",
+    "slug": "rl-toys",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.thursdayinteractive.rltoys",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.thursdayinteractive.rltoys",
+      "allowBackup": false,
+      "adaptiveIcon": {
+        "backgroundColor": "#204153",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "owner": "thursdayinteractive",
+    "plugins": [
+      "expo-sqlite"
+    ]
+  }
+}

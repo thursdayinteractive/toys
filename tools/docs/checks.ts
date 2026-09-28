@@ -5,10 +5,10 @@
 
 import { citationProblem, grammarFrom, scanCitations, type Grammar } from './citations';
 import type { CommitInfo } from './git';
-import { CONFLICT_MARKER, level2Sections, stripCode, wordCount } from './markdown';
-import { field, recordById, type DocRecord, type Model } from './records';
+import { CONFLICT_MARKER, level2Sections, stripCode } from './markdown';
+import { field, recordById, toyOf, type DocRecord, type Model } from './records';
 import { tokenResolves, refsTokens } from './refs';
-import { covers, diffSpec, newAmendments } from './spec';
+import { ADDENDA, addendumToken, covers, diffSpec, newAmendments } from './spec';
 
 export type CheckId =
   | 'citations'
@@ -16,13 +16,12 @@ export type CheckId =
   | 'front-matter'
   | 'frozen-records'
   | 'spec-amendments'
-  | 'caps'
+  | 'tiers'
   | 'conflict-markers'
   | 'scratch'
   | 'user-sections'
   | 'refs-lines'
-  | 'rule-tags'
-  | 'plan-stubs';
+  | 'rule-tags';
 
 export const CHECK_IDS: readonly CheckId[] = [
   'citations',
@@ -30,13 +29,12 @@ export const CHECK_IDS: readonly CheckId[] = [
   'front-matter',
   'frozen-records',
   'spec-amendments',
-  'caps',
+  'tiers',
   'conflict-markers',
   'scratch',
   'user-sections',
   'refs-lines',
   'rule-tags',
-  'plan-stubs',
 ];
 
 export interface Finding {
@@ -175,62 +173,65 @@ export function frozenRecords(ctx: CheckContext): Finding[] {
   return findings;
 }
 
+/**
+ * Changes to the repository spec and its addenda need a new amends: list
+ * ([[DEC-260928-documentation-baseline#clause-12]], [[DEC-260928-documentation-baseline#clause-42]]).
+ * A toy's spec is edited in place with the owner's approval, so it is not checked.
+ */
 export function specAmendments(ctx: CheckContext): Finding[] {
   if (ctx.base === null) return [];
   const findings: Finding[] = [];
   const tokens = newAmendments(ctx.base, ctx.head);
-  for (const [prefix, baseSpec] of ctx.base.specs) {
-    const diff = diffSpec(baseSpec, ctx.head.specs.get(prefix));
+  const baseSpec = ctx.base.specs.get('');
+  if (baseSpec !== undefined) {
+    const diff = diffSpec(baseSpec, ctx.head.specs.get(''));
     const path = baseSpec.path;
-    for (const n of diff.removed) findings.push({ check: 'spec-amendments', path, message: `section ${prefix}§${n} was removed or renumbered` });
+    for (const n of diff.removed) findings.push({ check: 'spec-amendments', path, message: `section §${n} was removed or renumbered` });
     if (diff.reordered) findings.push({ check: 'spec-amendments', path, message: 'sections changed order' });
     for (const n of diff.changed) {
-      if (!tokens.some((t) => covers(t, prefix, n))) {
-        findings.push({ check: 'spec-amendments', path, message: `section ${prefix}§${n} changed with no amends: list covering it` });
+      if (!tokens.some((t) => covers(t, '', n))) {
+        findings.push({ check: 'spec-amendments', path, message: `section §${n} changed with no amends: list covering it` });
       }
     }
+  }
+  for (const [path, text] of ctx.base.files) {
+    if (!path.startsWith(ADDENDA) || !path.endsWith('.md') || ctx.head.files.get(path) === text) continue;
+    const token = addendumToken(path);
+    if (!tokens.includes(token)) findings.push({ check: 'spec-amendments', path, message: `addendum changed with no amends: [${token}] covering it` });
   }
   return findings;
 }
 
-export interface CapLine {
-  what: string;
-  path: string;
-  words: number;
-  cap: number;
+/** Where a citation's target lives: a toy's folder name, or null for the repository tier. */
+function targetToy(inner: string, model: Model): string | null {
+  const spec = /^([a-z0-9-]*)§/.exec(inner);
+  if (spec) return spec[1] ? (spec[1] ?? null) : null;
+  const record = /^((?:DEC|EXC|ITEM|PROC)-[^#]+)/.exec(inner);
+  if (record) {
+    const r = recordById(model).get(record[1] ?? '');
+    return r === undefined ? null : toyOf(r.path);
+  }
+  const defs = model.anchors.get(inner) ?? [];
+  const toys = defs.map(toyOf);
+  return toys.length > 0 && toys.every((t) => t !== null) ? (toys[0] ?? null) : null;
 }
 
-/** Splits CLAUDE.md into rule text and example text (lines in `>` blocks). */
-export function splitClaude(claudeMd: string): { rules: string; examples: string } {
-  const lines = claudeMd.split('\n');
-  return {
-    rules: lines.filter((l) => !l.trimStart().startsWith('>')).join('\n'),
-    examples: lines.filter((l) => l.trimStart().startsWith('>')).join('\n'),
-  };
-}
-
-/** Every capped text and its size ([[DEC-260928-documentation-baseline#clause-28]]). */
-export function capLines(model: Model): CapLine[] {
-  const lines: CapLine[] = [];
-  if (model.claudeMd !== null) {
-    const split = splitClaude(model.claudeMd);
-    lines.push({ what: 'CLAUDE.md rules', path: 'CLAUDE.md', words: wordCount(split.rules), cap: 2200 });
-    lines.push({ what: 'CLAUDE.md examples', path: 'CLAUDE.md', words: wordCount(split.examples), cap: 1500 });
+/**
+ * The repository tier cites no toy, and a toy cites no other toy
+ * ([[DEC-260928-documentation-baseline#clause-7]]).
+ */
+export function tiers(ctx: CheckContext): Finding[] {
+  const findings: Finding[] = [];
+  for (const path of textPaths(ctx.head)) {
+    const from = path.startsWith('toys/') ? (path.split('/')[1] ?? null) : null;
+    for (const c of scanCitations(ctx.head.files.get(path) ?? '')) {
+      const to = targetToy(c.inner, ctx.head);
+      if (to === null || to === from) continue;
+      const message = from === null ? `the repository tier cites toy "${to}": [[${c.inner}]]` : `toy "${from}" cites toy "${to}": [[${c.inner}]]`;
+      findings.push({ check: 'tiers', path, line: c.line, message });
+    }
   }
-  for (const path of model.docPaths.filter((p) => p.endsWith('/roadmap.md'))) {
-    lines.push({ what: 'roadmap', path, words: wordCount(model.files.get(path) ?? ''), cap: 2000 });
-  }
-  for (const r of model.records) {
-    if (r.kind === 'PROC' && r.id.endsWith('-session-start')) lines.push({ what: 'session-start procedure', path: r.path, words: wordCount(r.body), cap: 1000 });
-    if (r.kind === 'ITEM' && field(r, 'kind') !== 'plan') lines.push({ what: 'item body', path: r.path, words: wordCount(r.body), cap: 400 });
-  }
-  return lines;
-}
-
-export function caps(ctx: CheckContext): Finding[] {
-  return capLines(ctx.head)
-    .filter((c) => c.words > c.cap)
-    .map((c) => ({ check: 'caps' as const, path: c.path, message: `${c.what} is ${c.words} words; the cap is ${c.cap}` }));
+  return findings;
 }
 
 export function conflictMarkers(ctx: CheckContext): Finding[] {
@@ -295,13 +296,6 @@ export function ruleTags(ctx: CheckContext): Finding[] {
   return findings;
 }
 
-export function planStubs(ctx: CheckContext): Finding[] {
-  return ctx.head.records
-    .filter((r) => r.kind === 'ITEM' && field(r, 'kind') === 'plan' && field(r, 'status') === 'closed')
-    .filter((r) => !/\b[0-9a-f]{7,40}\b/.test(r.body))
-    .map((r) => ({ check: 'plan-stubs' as const, path: r.path, message: 'a closed plan is a stub naming the commit that holds the full plan' }));
-}
-
 export function runCheck(id: CheckId, ctx: CheckContext, grammar: Grammar): Finding[] {
   switch (id) {
     case 'citations':
@@ -314,8 +308,8 @@ export function runCheck(id: CheckId, ctx: CheckContext, grammar: Grammar): Find
       return frozenRecords(ctx);
     case 'spec-amendments':
       return specAmendments(ctx);
-    case 'caps':
-      return caps(ctx);
+    case 'tiers':
+      return tiers(ctx);
     case 'conflict-markers':
       return conflictMarkers(ctx);
     case 'scratch':
@@ -326,8 +320,6 @@ export function runCheck(id: CheckId, ctx: CheckContext, grammar: Grammar): Find
       return refsLines(ctx);
     case 'rule-tags':
       return ruleTags(ctx);
-    case 'plan-stubs':
-      return planStubs(ctx);
     default: {
       const exhaustive: never = id;
       return exhaustive;

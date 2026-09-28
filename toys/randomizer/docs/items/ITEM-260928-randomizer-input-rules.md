@@ -7,7 +7,7 @@ benchmark: bm-randomizer-core
 ---
 # Randomizer input rules
 
-Multipliers are decimals and chances are derived from them ([[DEC-260928-randomizer-weighting]]). These questions are not yet answered:
+Multipliers are decimals and chances are derived from them ([[randomizer§1]], [[randomizer§2]]). These questions are not yet answered:
 - the multiplier an item gets when the person enters none (the owner's example, "1, 1.2, 2.0", suggests 1; this is an inference);
 - whether zero is allowed, and what a zero-multiplier item means;
 - whether negative values are refused, and whether there is a maximum;
@@ -19,4 +19,4 @@ Multipliers are decimals and chances are derived from them ([[DEC-260928-randomi
 The owner has answered each question, and the answers are recorded in a decision record.
 
 ## Resolution
-Closed 2026-09-28, by owner direction: the answers are recorded in [[DEC-260928-randomizer-input-rules]].
+Closed 2026-09-28, by owner direction: the answers are recorded in [[randomizer§7]].

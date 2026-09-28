@@ -5,11 +5,17 @@ governance: yes
 
 # Vetting a change many parts depend on
 
-Use this for a change to a core type shape, or to a mechanism several parts depend on ([[rule-vetting-directive]]). Discovery comes before design. The conduct rules for every step are [[rule-facts-not-direction]], [[rule-running-is-not-solving]], [[rule-narration-lags-work]], [[rule-check-existing-mechanisms]], [[rule-dont-open-by-declaring]] and [[rule-reporting-standard]].
+Use this when the owner asks for it ([[rule-vetting-directive]]). Discovery comes before design. The conduct for every step is below, with [[rule-check-existing-mechanisms]], [[rule-dont-open-by-declaring]] and [[rule-reporting-standard]].
+
+## Conduct
+
+- **Facts, not direction.** Independent agents are given the facts gathered so far and nothing else: no favored answer, no candidate shape, no checklist to confirm. Every candidate gets the same instructions, since independence is the point of asking more than one agent.
+- **Running is not solving.** While relaying what agents found, don't quietly converge on an answer. Report the findings; the plan resolves them.
+- **Narration lags work.** Write the plan's account of what happened only after every step, including review, is done.
 
 ## Discovery
 
-1. **Find what depends on it.** An independent agent lists every consumer of what is changing, across cores, hosts and adapters, and every existing mechanism that already does some or all of the job.
+1. **Find what depends on it.** An independent agent lists every consumer of what is changing, across cores, hosts and storage, and every existing mechanism that already does some or all of the job.
 2. **Check it against what's decided.** An independent agent checks the request and step 1's findings against the specs and the precepts ([[rule-precepts]]) and reports conflicts as facts.
 
 ## Checkpoint

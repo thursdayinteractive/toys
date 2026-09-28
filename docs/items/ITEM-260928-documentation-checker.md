@@ -3,7 +3,6 @@ id: ITEM-260928-documentation-checker
 kind: task
 status: closed
 queued: no
-verified: n/a
 benchmark: bm-repository-foundation
 ---
 # Build the documentation checker
