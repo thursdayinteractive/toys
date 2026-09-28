@@ -47,4 +47,4 @@ A die has a number of sides, entered as a number. A roll is of one or more dice 
 
 # 6. Storage
 
-Lists start empty and are not kept between uses. When storage is added, it goes through a storage adapter, and the core does not change.
+A new list starts empty. A list can be saved under a title the person chooses, keeping each item's label and multiplier. Saved lists are kept as an array of titled lists. Saving goes through a storage adapter, and the core does not change.

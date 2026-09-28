@@ -24,3 +24,7 @@ The first tool is a randomizer. The person enters a list of items and the random
 ## Precept conflicts resolved
 
 None found.
+
+## Supersessions
+
+- clause-4 is superseded by [[DEC-260928-saved-lists]]: a list can be saved, in Phase 1.
