@@ -7,7 +7,7 @@ benchmark: bm-app-add-on-route
 ---
 # How a toy enters the curriculum app
 
-Every toy's core is built to fit the curriculum app's engine rules ([[§3]]). The curriculum app's own spec has no place for a tool that is not a question-set module, so where a toy sits in that app's layer map, and how its code reaches that repository, has to be decided there as well as here. Deciding it is Phase 3 work. It is recorded now so the cores are not built in a way that closes it off.
+Every toy's core is built to fit the curriculum app ([[§3]]). Where a toy sits inside that app, and how its code gets there, is not decided, and needs agreement in the curriculum app as well as here. It is Phase 3 work, recorded now so the cores are not built in a way that closes it off.
 
 ## Done when
-The route is decided in a decision record here, with a matching record in the curriculum app.
+The route is decided in a decision record here, and agreed in the curriculum app.

@@ -7,7 +7,7 @@ benchmark: bm-website-delivery
 ---
 # How the toys are delivered on ThursdayInteractive.com
 
-Nothing in this repository records what the website runs on. An older inventory record in the curriculum app describes it as a GoDaddy basic hosting plan, not WordPress or cPanel, hosting downloadable PDFs. That is unverified here. The curriculum app chose Cloudflare Pages for one subdomain only. Whether the current site can host an interactive page, and how the toys reach it, is not known.
+Nothing in this repository records what the website runs on. An unverified earlier note describes it as a GoDaddy basic hosting plan, not WordPress or cPanel, used for downloadable PDFs. Whether it can host an interactive page, and how the toys reach it, is not known.
 
 ## Done when
 The website's hosting is verified and recorded as a fact, and the delivery route is decided in a decision record.

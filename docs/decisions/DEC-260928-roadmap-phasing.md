@@ -18,10 +18,6 @@ Each toy is delivered to three hosts. The owner set the order in conversation, 2
 
 None. The order was set by the owner.
 
-## Comparison and review files
-
-None.
-
 ## Precept conflicts resolved
 
 None found.

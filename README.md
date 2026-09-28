@@ -9,6 +9,4 @@ Each toy has its own folder under `toys/`, with its own code and documentation.
 - `CLAUDE.md`: the rules every working session follows.
 - `docs/roadmap.md`: the plan for what all toys share, by phase.
 - `docs/architecture/Architecture.md`: the design every toy follows.
-- `docs/decisions/`, `docs/items/`, `docs/procedures/`, `docs/facts/`, `docs/product/`, `docs/guide/`: decision records, work items, procedures, facts, current behavior, and the User Guide.
-
-The documentation structure is the same as the curriculum app's.
+- `docs/decisions/`, `docs/items/`, `docs/procedures/`, `docs/facts/`, `docs/guide/`: decision records, work items, procedures, facts and the User Guide.
