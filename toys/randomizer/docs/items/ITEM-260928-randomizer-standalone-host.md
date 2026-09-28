@@ -3,7 +3,6 @@ id: ITEM-260928-randomizer-standalone-host
 kind: task
 status: blocked
 queued: no
-verified: none
 phase: 1
 benchmark: bm-randomizer-standalone
 blocked_on: the standalone app existing, ITEM-260928-standalone-app-shell

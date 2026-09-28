@@ -3,7 +3,6 @@ id: ITEM-260928-temporary-removal
 kind: task
 status: open
 queued: no
-verified: none
 ---
 # Temporarily remove randomizer items
 

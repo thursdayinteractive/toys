@@ -3,7 +3,6 @@ id: ITEM-260928-code-tooling
 kind: task
 status: closed
 queued: yes
-verified: n/a
 benchmark: bm-repository-foundation
 ---
 # Set up the code tooling
