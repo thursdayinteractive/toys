@@ -1,0 +1,5 @@
+# Scratch space: never committed or cited
+/scratch/
+
+# dependencies
+node_modules/
