@@ -7,7 +7,7 @@ status: proposed
 
 ## Context
 
-Lists were to start empty, with storage later and outside Phase 1 (clause-4 of [[DEC-260928-randomizer-weighting]]). The owner directed, 2026-09-28, that a list can be saved, in Phase 1. Storage goes through a storage adapter, and the core does not change ([[§6]]).
+Lists were to start empty, with storage later and outside Phase 1 (clause-4 of [[DEC-260928-randomizer-weighting]]). The owner directed, 2026-09-28, that a list can be saved, in Phase 1. Storage goes through the storage interface, and the core does not change ([[§6]]).
 
 ## Clauses
 

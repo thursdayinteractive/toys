@@ -18,8 +18,7 @@ Each layer depends only on the layers below it.
 
 | Layer | Contents | Depends on |
 |---|---|---|
-| Host | One per delivery target: the standalone app, the website, the curriculum app add-on. Screens, input, display | Core, Adapters |
-| Adapters | Sources of non-deterministic input, and storage when a toy needs it | none |
+| Host | One per delivery target: the standalone app, the website, the curriculum app add-on. Screens, input, display, and the values and storage a core needs ([[§5]], [[§6]]) | Core |
 | Core | One per toy: types, validation, the toy's logic | none |
 
 The core contains no platform imports, no UI and no global state. It does not read clocks, the network, storage or a random source directly.
@@ -49,13 +48,13 @@ Each toy lives in its own folder, with its own core, its own interface for each 
 
 # 5. Non-deterministic inputs
 
-A host supplies each non-deterministic input a core needs through an adapter ([[§2]]). A randomness source supplies numbers uniformly distributed from 0 (inclusive) to 1 (exclusive). Tests supply fixed values, so every core result can be reproduced exactly.
+A host passes each non-deterministic input a core needs into it as a plain value. A random value is a number uniformly distributed from 0 (inclusive) to 1 (exclusive). Tests supply fixed values, so every core result can be reproduced exactly.
 
 ---
 
 # 6. Storage
 
-A toy that keeps anything between uses does so through a storage adapter ([[§2]]) behind one interface, and its core does not change.
+A toy that keeps anything between uses does so through one small storage interface that every host supplies ([[§2]]), and its core does not change.
 
 ---
 
