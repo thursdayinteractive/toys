@@ -16,7 +16,7 @@ A turn is timed from the moment it starts. The host passes in the time the turn 
 
 1. The time shows counting up from 0:00, in minutes and seconds.
 2. At 2:00 the time is replaced by the dragon. The two minutes are fixed.
-3. At 2:30 the dragon starts to flash and to grow. It starts about 1.5 cm across and grows steadily until, at 3:00, it fills the screen. It then stays that size, still flashing, until tapped.
+3. At 2:30 the dragon starts to flash and to grow. It starts about 1.5 cm across and grows steadily until, at 3:00, it fills the screen. It flashes once a second at 2:30, faster as it grows, up to five times a second at 3:00. It then stays that size, flashing five times a second, until tapped.
 4. Tapping the time or the dragon ends the turn and starts the next one at 0:00.
 
 ---
