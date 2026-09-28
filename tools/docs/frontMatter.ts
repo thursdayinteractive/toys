@@ -42,15 +42,12 @@ function schemaFor(kind: RecordKind): Record<string, FieldSpec> {
       };
     case 'ITEM':
       return {
-        kind: { required: true, values: ['task', 'decision', 'plan'] },
-        status: { required: true, values: ['open', 'blocked', 'parked', 'closed', 'dropped'] },
+        kind: { required: true, values: ['task', 'decision'] },
+        status: { required: true, values: ['open', 'blocked', 'closed'] },
         queued: { required: false, values: ['yes', 'no'] },
-        verified: { required: false, values: ['none', 'web', 'device', 'n/a'] },
         phase: { required: false },
         benchmark: { required: false },
         blocked_on: { required: false },
-        branch: { required: false },
-        pr: { required: false },
       };
     case 'PROC':
       return { governance: { required: true, values: ['yes', 'no'] } };
@@ -107,10 +104,6 @@ export function validateFields(kind: RecordKind, id: string, fields: Fields): st
     if (status === 'blocked' && (!fields.has('blocked_on') || !fields.has('phase'))) {
       errors.push('a blocked item needs blocked_on and phase');
     }
-    if (status === 'parked' && !fields.has('branch') && !fields.has('pr')) {
-      errors.push('a parked item needs branch or pr');
-    }
-    if (fields.get('kind') === 'task' && !fields.has('verified')) errors.push('a task needs verified');
     const benchmark = fields.get('benchmark');
     if (benchmark !== undefined && !benchmark.startsWith('bm-')) errors.push('benchmark must be a bm- anchor');
   }

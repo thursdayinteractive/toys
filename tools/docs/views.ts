@@ -2,7 +2,6 @@
 // ([[DEC-260928-documentation-baseline#clause-36]]).
 
 import type { Flight } from './branches';
-import { wordCount } from './markdown';
 import { field, type DocRecord, type Model } from './records';
 
 function titleOf(r: DocRecord): string {
@@ -58,19 +57,15 @@ export function brief(model: Model, flights: Flight[], today: string): string {
     `Phase ${p}:`,
     ...blocked.filter((r) => (field(r, 'phase') ?? '?') === p).map((r) => `${itemLine(r)} (blocked on ${field(r, 'blocked_on') ?? '?'})`),
   ]);
-  const parked = items.filter((r) => is(r, 'status', 'parked')).map((r) => `${itemLine(r)} (${field(r, 'branch') ?? field(r, 'pr') ?? ''})`);
-  const text = [
+  return [
     `# Brief, ${today}`,
     '',
     section('Active phase', nowSections(model)),
     section('Queued', queued.map(itemLine)),
-    section('Other open tasks and plans', backlog.map(itemLine)),
+    section('Other open tasks', backlog.map(itemLine)),
     section('Awaiting the owner', awaiting),
     section('Blocked', blockedLines),
-    section('Parked', parked),
     section('Facts past their recheck date', staleFacts(model, today)),
     section('Other branches in flight', flights.map((f) => `- ${f.branch}: ${f.commits} commit(s), last ${f.lastDate}: ${f.lastSubject}`)),
   ].join('\n');
-  const words = wordCount(text);
-  return words > 1000 ? `${text}\n(The brief is ${words} words, over its 1,000-word cap: the owner decides what to cut.)\n` : text;
 }

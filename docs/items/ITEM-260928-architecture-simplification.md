@@ -14,7 +14,7 @@ The architecture was carried over from the curriculum app, which is far larger t
 
 ## Accepted simplifications
 The owner accepted these, 2026-09-28. Done: vetting only on request ([[DEC-260928-documentation-baseline#clause-34]]); the documentation checker disabled until it is rewritten; the vetting-only and plan rules moved or dropped; item statuses cut to open, blocked and closed, with no plan kind and no `verified` field; the adapters layer replaced by values passed in and one storage interface ([[§2]], [[§5]], [[§6]]); the caps removed. Also done: decision records kept only for choices that cross toys or last; each toy's behavior in its own spec, with one guide page saying what exists now; two tiers kept: the repository's documents never cite a toy, and each toy's documents cite up to them ([[DEC-260928-documentation-baseline#clause-7]], [[DEC-260928-documentation-baseline#clause-13]]). Still to do:
-- the checker rewritten for what remains.
+- none. The checker is rewritten for what remains, with a new check that the repository tier cites no toy.
 
 Storage and web versions left this item, by owner direction: each becomes an addendum when the first toy that needs it has a working solution ([[DEC-260928-documentation-baseline#clause-42]]). The finding below is kept as evidence for the web versions addendum.
 
