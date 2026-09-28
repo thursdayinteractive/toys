@@ -12,7 +12,8 @@ Toy cores are TypeScript and must run inside the curriculum app without change (
 ## Clauses
 
 - **clause-1.** **Same tools.** The same TypeScript major version as the curriculum app, the same strict compiler settings, and Node's built-in test runner run directly on `.ts` files.
-- **clause-2.** **Same import style.** Core source uses extensionless relative imports, as the curriculum app does, so a core's files can be placed in that app unchanged. Tests resolve them through the same kind of resolve hook.
+- **clause-2.** **Same import style.** Core source uses extensionless relative imports, as the curriculum app does, so a core's files can be placed in that app unchanged. Tests resolve them through the same kind of resolve hook, kept in `tools/`.
+- **clause-3.** **Erasable syntax only.** The compiler setting `erasableSyntaxOnly` is on, so cores use no TypeScript syntax that must be compiled away, such as `enum` or `namespace`. This is the one departure from the curriculum app's settings. It is needed because tests run the `.ts` files directly (owner direction, 2026-09-28, accepting the recommendation).
 
 ## Options considered
 

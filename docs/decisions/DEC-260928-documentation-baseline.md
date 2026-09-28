@@ -25,7 +25,8 @@ This repository holds small tools and toys. Each toy runs on its own as an app, 
 ### Layout
 
 - **clause-6.** **Repository layout.**
-  - Top level: `CLAUDE.md`, `README.md`, `docs/`, `toys/`, and `scratch/` (never committed).
+  - Top level: `CLAUDE.md`, `README.md`, `docs/`, `toys/`, `tools/`, and `scratch/` (never committed).
+  - `tools/` holds the project's own scripts: `tools/docs/` for the documentation checker, and the test runner's import hook at `tools/` itself.
   - `docs/` holds what all toys share: `roadmap.md`, `architecture/Architecture.md`, `architecture/exceptions/`, `decisions/`, `items/`, `procedures/`, `facts/<area>.md`, `product/<subject>.md` and `guide/User_Guide.md`.
   - Work items live in the repository, not in an external tracker.
 - **clause-7.** **Toy folders.** Each toy has its own folder, `toys/<toy>/`, holding its code and its own `docs/` with whichever of `roadmap.md`, `architecture/`, `decisions/`, `items/`, `product/` and `guide/` it needs. Repository-level documents cover only what toys share and do not name individual toys. A toy's records follow the same rules as the repository's.

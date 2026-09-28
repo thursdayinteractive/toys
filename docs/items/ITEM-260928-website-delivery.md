@@ -7,7 +7,7 @@ benchmark: bm-website-delivery
 ---
 # How the toys are delivered on ThursdayInteractive.com
 
-The site takes embedded HTML, CSS and JavaScript, not edits to its own source ([[fact-website-hosting]]). Not yet known: whether an embed runs in the page itself or in a separate frame; whether it can load a script file hosted elsewhere; and any limit on its size. Not yet decided: where a toy's built script is hosted, if anywhere, and how it reaches the embed.
+Each toy's website version is a single JavaScript file ([[DEC-260928-standalone-app#clause-3]]), placed through the site's embed ([[fact-website-hosting]]), which runs inside a frame ([[fact-website-embed-frame]]). Not yet known: whether an embed can load a script file hosted elsewhere, and any limit on its size. Not yet decided: whether the file is pasted into the embed or hosted elsewhere and loaded by it.
 
 ## Done when
 A small test embed has answered the unknowns, the answers are recorded as facts, and the delivery route is decided in a decision record.
