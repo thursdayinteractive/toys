@@ -13,7 +13,7 @@ The spec's dice roller rolls one die and returns one number ([[randomizer§5]]).
 
 - **clause-1.** **Several dice, each returned individually.** A roll is of one or more dice with the same number of sides. It returns one number per die, each on its own, not a total.
   amends: [randomizer§5]
-- **clause-2.** **A second field.** The number of dice is entered in a second field beside the dice roller's "Dice Faces" field ([[DEC-260928-dice-roller-placement#clause-3]]). Its label and input rules are open ([[ITEM-260928-dice-roller-input-rules]]).
+- **clause-2.** **A second field.** The number of dice is entered in a second field, apart from the "Dice Faces" field ([[DEC-260928-dice-roller-placement#clause-3]]). Its label and input rules are open ([[ITEM-260928-dice-roller-input-rules]]).
 
 ## Options considered
 
