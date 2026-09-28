@@ -3,7 +3,7 @@ id: DEC-260928-app-name
 status: proposed
 ---
 
-# The standalone app's name
+# The standalone app's name, identifier and builds
 
 ## Context
 
@@ -13,6 +13,8 @@ The standalone app contains every toy ([[DEC-260928-standalone-app]]). The toys 
 
 - **clause-1.** **Full name.** The app's full name is "RogueLore Toys".
 - **clause-2.** **Name under the icon.** On the phone's home screen, the app is labeled "RL Toys".
+- **clause-3.** **Identifier.** The app's identifier in both stores is `com.thursdayinteractive.rltoys`.
+- **clause-4.** **Builds.** The app is built in Expo's cloud, with the same build profiles as the curriculum app.
 
 ## Options considered
 
