@@ -78,6 +78,7 @@ A new list starts empty. Saving goes through the storage interface, and the core
 4. The number of dice is entered in a field labeled "Quantity:". It takes whole numbers of up to two digits, so the largest is 99.
 5. With "Quantity:" empty, a roll returns one number. A quantity of 0 blocks the roll, with no message.
 6. "Faces:" and "Quantity:" start blank, and so does the place where a roll's numbers are shown.
+7. When "Faces:" is below 2 and "Quantity:" is 0, the warning "Invalid entry" shows.
 
 ---
 
