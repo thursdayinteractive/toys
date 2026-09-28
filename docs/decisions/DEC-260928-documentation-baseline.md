@@ -49,15 +49,14 @@ This repository holds small tools and toys. Each toy runs on its own as an app, 
 
 - **clause-16.** **Roadmaps.** A roadmap holds `## Now`, each phase's scope, and benchmark lines, each with an anchor, a done-criterion and a status: `not started | in progress | done | dropped`. Finished phases collapse into a table whose anchors stay citable. Scope is product and development milestones only.
 - **clause-17.** **Items.** Front matter:
-  - `kind: task | decision | plan`;
-  - `status: open | blocked | parked | closed | dropped`; `blocked` needs `blocked_on` and `phase`; `parked` needs `branch` or `pr` and means real unmerged work;
+  - `kind: task | decision`;
+  - `status: open | blocked | closed`; `blocked` needs `blocked_on` and `phase`;
   - `queued: yes | no`, set only by the owner;
-  - `verified: none | web | device | n/a` for tasks;
   - `benchmark`, when the item serves one.
 
   The body says what is needed and when it is done. A decision item holds the question; its draft answer is a proposed decision record.
-- **clause-18.** **Plans.** A plan is an item with `kind: plan`. It holds the process reasoning for a piece of work. When closed, it is reduced to a short stub that names the commit holding the full plan.
-- **clause-19.** **Closing.** An item is closed or dropped only with the owner's explicit yes, and is never deleted.
+- **clause-18.** **Plans.** Removed by owner direction, 2026-09-28. The reasoning for a piece of work goes in its item.
+- **clause-19.** **Closing.** An item is closed only with the owner's explicit yes, and is never deleted.
 
 ### Facts, product pages and guides
 
@@ -78,7 +77,7 @@ This repository holds small tools and toys. Each toy runs on its own as an app, 
 
 ### Caps
 
-- **clause-28.** **Caps.** `CLAUDE.md` rules: 2,200 words, and its examples 1,500, counted separately. Each roadmap: 2,000 words. The session-start procedure: 1,000 words. Each item body other than a plan: 400 words. The brief: 1,000 words; when it runs over, the owner decides what to cut.
+- **clause-28.** **Caps.** Removed by owner direction, 2026-09-28.
 
 ### Rules and conduct
 
@@ -92,14 +91,14 @@ This repository holds small tools and toys. Each toy runs on its own as an app, 
 ### Sessions
 
 - **clause-35.** **Session start.** Read the start procedure; account for other branches and open pull requests; switch to the session's branch; read `CLAUDE.md`, the repository roadmap and spec (and the toy's, for toy work); present the brief; confirm the work.
-- **clause-36.** **The brief** lists: the active phase, queued items, other open tasks and plans, items and proposed decisions awaiting the owner, blocked items by phase, parked items, facts past their recheck date, and other branches in flight.
+- **clause-36.** **The brief** lists: the active phase, queued items, other open tasks, items and proposed decisions awaiting the owner, blocked items by phase, facts past their recheck date, and other branches in flight.
 - **clause-37.** **Close-out.** Merge the main branch in; confirm items and decisions with the owner; write only the records the work touched; remove temporary records; run the checks; open the pull request with its review and `Refs:` line; record the owner's answers; merge only on approval of that exact head.
 - **clause-38.** **The review** lists foundational changes (each with the owner's accept or reject), working-state changes, possible drift between code and documents, items being closed, and overlaps with other branches.
-- **clause-39.** **Temporary material.** Vetting and comparison records are committed on the branch while work is in progress and removed before merge, once their lasting reasoning is in a decision record or plan. `scratch/` is never committed or cited.
+- **clause-39.** **Temporary material.** Vetting and comparison records are committed on the branch while work is in progress and removed before merge, once their lasting reasoning is in a decision record or item. `scratch/` is never committed or cited.
 
 ### Checks
 
-- **clause-40.** **What is checked.** Citations resolve to live targets; names and anchors are unique; front matter is valid; frozen records are unchanged except in their appended sections; spec changes are covered by amendments; caps hold; no conflict markers; nothing cites `scratch/`; user sections carry no internal names; commits carry `Refs:` lines; every `CLAUDE.md` rule has a tag; closed plans are stubs.
+- **clause-40.** **What is checked.** Citations resolve to live targets; names and anchors are unique; front matter is valid; frozen records are unchanged except in their appended sections; spec changes are covered by amendments; no conflict markers; nothing cites `scratch/`; user sections carry no internal names; commits carry `Refs:` lines; every `CLAUDE.md` rule has a tag.
 - **clause-41.** **How it is checked.** By the documentation checker, `npm run docs -- check`, which also prints the brief (`npm run docs -- brief`). A check the checker cannot run is carried out by hand at close-out, and the session says which.
 
 ## Options considered

@@ -6,6 +6,8 @@ Start every session with [[PROC-260928-session-start]]. When the owner asks to c
 
 Each rule has an anchor, a tag, a reason and the clause it implements. `[conduct]` rules govern how the session works with the owner, `[review]` rules are listed in the close-out review, and `[check]` rules are verified by `npm run docs -- check` ([[DEC-260928-documentation-baseline#clause-41]]). Examples sit in marked blocks under their rules.
 
+The documentation checker is disabled until it is rewritten, so `[check]` rules are checked by hand at close-out. Until [[ITEM-260928-architecture-simplification]] closes, foundational records are edited in place with the owner's approval, without amendments or supersessions (owner direction, 2026-09-28).
+
 ## Working with the owner
 
 - **rule-stop-and-surface.** [conduct] At the first sign of an unanticipated issue, a change to a foundational record, a step beyond or against what was approved, a conflict with a spec, decision or exception, a change of scope or order, or a merge conflict in a foundational file, stop and bring it to the owner before writing anything. Reason: a quick fix nobody vetted tends to cause the next problem. Implements [[DEC-260928-documentation-baseline#clause-31]].
@@ -30,19 +32,14 @@ Each rule has an anchor, a tag, a reason and the clause it implements. `[conduct
 - **rule-weigh-owner-recommendation.** [conduct] An option the owner raises gets the same full check as every other candidate, including what each option really costs once made to work. It is argued against directly if it is wrong, never quietly outweighed by something that merely looks lighter. Reason: a design that looks small at first can gather fixes until it is the heavier one. Implements [[DEC-260928-documentation-baseline#clause-34]].
   > **Example.** The owner suggests a dedicated store; a reuse design looks lighter and is chosen; it then needs a patch per edge case until it outgrows the store it replaced.
 
-## Plans and decisions
+## Decisions
 
-- **rule-record-precept-decisions.** [conduct] Record each decision that resolves a precept conflict as its own bullet, apart from the implementation steps, and carry it unchanged through every revision. Reason: a decision buried in steps gets lost in a rewrite. Implements [[DEC-260928-documentation-baseline#clause-34]].
-- **rule-plan-rewrite-is-rebuild.** [conduct] Rewriting a plan after discussion means rebuilding it: re-derive every assumption, and say what stayed the same as well as what changed. Reason: patching carries forward assumptions the discussion already overturned. Implements [[DEC-260928-documentation-baseline#clause-34]].
 - **rule-record-is-wrong.** [conduct] If the owner says something was decided and the record doesn't show it, the record is wrong. Never cite your own earlier text against the owner's account. Reason: the decision is the owner's; the record only writes it down. Implements [[DEC-260928-documentation-baseline#clause-34]].
 - **rule-correction-first.** [conduct] Act on a correction first. Analyze causes only if asked, from the owner's account. Reason: the correction is what was asked for. Implements [[DEC-260928-documentation-baseline#clause-34]].
 
 ## Vetting
 
 - **rule-vetting-directive.** [conduct] A change follows [[PROC-260928-vetting]] only when the owner asks for it. Every other change is planned directly and brought to the owner for approval. Reason: full vetting is sized for a large app, and these toys are small. Implements [[DEC-260928-vetting-on-request]].
-- **rule-facts-not-direction.** [conduct] Independent agents are given the facts gathered so far and nothing else: no favored answer, no candidate shape, no checklist to confirm. Every candidate gets the same instructions. Reason: independence is the point of asking more than one agent. Implements [[DEC-260928-documentation-baseline#clause-34]].
-- **rule-running-is-not-solving.** [conduct] While relaying what agents found, don't quietly converge on an answer. Report the findings; the plan resolves them. Reason: a private conclusion shapes what gets reported. Implements [[DEC-260928-documentation-baseline#clause-34]].
-- **rule-narration-lags-work.** [conduct] Write a plan's account of what happened only after every step, including review, is done. Reason: prose written ahead of the work reads as results that don't exist. Implements [[DEC-260928-documentation-baseline#clause-34]].
 - **rule-check-existing-mechanisms.** [conduct] Before accepting that something needs new machinery, search the code for a mechanism that already does the job. Reason: an existing mechanism is the simpler solution by definition. Implements [[DEC-260928-documentation-baseline#clause-34]].
   > **Example.** Before adding a new flag to a core's data, check whether an existing field or rule already expresses it.
 - **rule-dont-open-by-declaring.** [conduct] Open a design change by proposing to look at what it touches, not by announcing a large build. Reason: the scope comes from what discovery finds. Implements [[DEC-260928-documentation-baseline#clause-34]].
@@ -52,7 +49,7 @@ Each rule has an anchor, a tag, a reason and the clause it implements. `[conduct
 - **rule-add-on-compatible.** [review] Every toy's core meets [[§3]], so it stays usable as a curriculum app add-on. Reason: the app is the last host built, so a break would surface late. Implements [[DEC-260928-architecture-baseline#clause-3]].
 - **rule-branch-per-session.** [conduct] Work on the session's own branch, never `main`, and push as you go. Commit only verified changes: typecheck and tests clean, and the documentation checks for documentation. Reason: sessions run in parallel and each lands through its own pull request. Implements [[DEC-260928-documentation-baseline#clause-4]].
 - **rule-long-running-operations.** [conduct] Submit a build or other long remote job and stop; don't poll it unless asked. Reason: the owner checks status between sessions. Implements [[DEC-260928-documentation-baseline#clause-34]].
-- **rule-closing-items.** [conduct] Close or drop an item only with the owner's explicit yes, recorded in the review; never delete one. Reason: an item closed without direction drops work silently. Implements [[DEC-260928-documentation-baseline#clause-19]].
+- **rule-closing-items.** [conduct] Close an item only with the owner's explicit yes, recorded in the review; never delete one. Reason: an item closed without direction drops work silently. Implements [[DEC-260928-documentation-baseline#clause-19]].
 - **rule-queue.** [conduct] Only the owner sets `queued: yes`. Reason: the queue is the owner's. Implements [[DEC-260928-documentation-baseline#clause-17]].
 
 ## Documentation
@@ -64,9 +61,8 @@ Each rule has an anchor, a tag, a reason and the clause it implements. `[conduct
 - **rule-citations.** [check] Citations use only the forms below and resolve; names and anchors are unique; front matter is valid. Reason: an unresolved citation is a broken pointer. Implements [[DEC-260928-documentation-baseline#clause-24]] and [[DEC-260928-documentation-baseline#clause-40]].
 - **rule-frozen-records.** [check] Accepted decisions and exceptions change only in their appended sections, and spec changes match an `amends:` list. Reason: a record edited to match the code can no longer catch drift. Implements [[DEC-260928-documentation-baseline#clause-12]] and [[DEC-260928-documentation-baseline#clause-14]].
 - **rule-no-conflict-markers.** [check] No conflict markers anywhere, and nothing cites `scratch/`. Reason: nothing else scans documents for them. Implements [[DEC-260928-documentation-baseline#clause-40]].
-- **rule-caps.** [check] The caps in [[DEC-260928-documentation-baseline#clause-28]] hold. Reason: start-of-session files must be readable in one pass. Implements [[DEC-260928-documentation-baseline#clause-28]].
 - **rule-user-text.** [check] Guide sections for people using the toys carry no internal names. Reason: they are read outside the project. Implements [[DEC-260928-documentation-baseline#clause-22]].
-- **rule-rule-tags.** [check] Every rule here has a tag, and closed plans are stubs. Reason: an untagged rule has no way to be enforced. Implements [[DEC-260928-documentation-baseline#clause-30]] and [[DEC-260928-documentation-baseline#clause-18]].
+- **rule-rule-tags.** [check] Every rule here has a tag. Reason: an untagged rule has no way to be enforced. Implements [[DEC-260928-documentation-baseline#clause-30]].
 
 ## Citation forms
 

@@ -3,7 +3,6 @@ id: ITEM-260928-website-hosting-setup
 kind: task
 status: open
 queued: no
-verified: none
 benchmark: bm-website-delivery
 ---
 # Set up the Cloudflare Pages project and the toys.thursdayinteractive.com subdomain

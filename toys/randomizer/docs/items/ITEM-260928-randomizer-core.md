@@ -3,7 +3,6 @@ id: ITEM-260928-randomizer-core
 kind: task
 status: closed
 queued: yes
-verified: n/a
 benchmark: bm-randomizer-core
 ---
 # Build the randomizer core

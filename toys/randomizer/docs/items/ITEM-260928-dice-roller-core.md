@@ -3,7 +3,6 @@ id: ITEM-260928-dice-roller-core
 kind: task
 status: open
 queued: no
-verified: n/a
 benchmark: bm-dice-roller-core
 ---
 # Build the dice roller core

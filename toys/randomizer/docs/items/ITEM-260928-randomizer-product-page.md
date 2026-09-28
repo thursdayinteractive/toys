@@ -3,7 +3,6 @@ id: ITEM-260928-randomizer-product-page
 kind: task
 status: closed
 queued: yes
-verified: n/a
 ---
 # Write the randomizer product page
 

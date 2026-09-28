@@ -17,4 +17,4 @@ Follow this when the owner asks to close the session ([[DEC-260928-documentation
 8. **Record the owner's answers** in the review, revert anything the owner rejects, and finalize the description.
 9. **Merge only on the owner's approval of this pull request at its current head.** Just before merging, `git fetch origin` and check `git merge-base --is-ancestor origin/main HEAD`; if `main` has moved, go back to step 1 and ask again. Merge with a merge commit, never squash or rebase. Without approval, the pull request stays open for the next session.
 
-**After a merge**, further changes need a new pull request: fast-forward the branch to `origin/main`, do the work, and close out again. A session that changed nothing opens no pull request. Work the owner parks is recorded as a `parked` item.
+**After a merge**, further changes need a new pull request: fast-forward the branch to `origin/main`, do the work, and close out again. A session that changed nothing opens no pull request.
