@@ -1,7 +1,7 @@
 ---
 id: ITEM-260928-randomizer-input-rules
 kind: decision
-status: open
+status: closed
 queued: yes
 benchmark: bm-randomizer-core
 ---
@@ -17,3 +17,6 @@ Multipliers are decimals and chances are derived from them ([[DEC-260928-randomi
 
 ## Done when
 The owner has answered each question, and the answers are recorded in a decision record.
+
+## Resolution
+Closed 2026-09-28, by owner direction: the answers are recorded in [[DEC-260928-randomizer-input-rules]].
