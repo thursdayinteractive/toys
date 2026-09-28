@@ -8,7 +8,7 @@ benchmark: bm-repository-foundation
 ---
 # Set up the code tooling
 
-The repository has no `package.json`, TypeScript configuration or test runner yet. Cores are TypeScript ([[§3 item 1]]). Which TypeScript version and test runner to use is for the owner when this starts; whatever is chosen has to let a core's code and tests also run as part of the curriculum app ([[§3]]).
+The tooling matches the curriculum app's ([[DEC-260928-code-tooling]]): TypeScript, strict settings, Node's built-in test runner on `.ts` files, and extensionless imports. The repository has no `package.json`, TypeScript configuration or test runner yet.
 
 ## Done when
 A typecheck and a test run both pass on an empty core module, from a clean clone.

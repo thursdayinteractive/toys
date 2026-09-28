@@ -7,7 +7,7 @@ benchmark: bm-website-delivery
 ---
 # How the toys are delivered on ThursdayInteractive.com
 
-Nothing in this repository records what the website runs on. An unverified earlier note describes it as a GoDaddy basic hosting plan, not WordPress or cPanel, used for downloadable PDFs. Whether it can host an interactive page, and how the toys reach it, is not known.
+The site takes embedded HTML, CSS and JavaScript, not edits to its own source ([[fact-website-hosting]]). Not yet known: whether an embed runs in the page itself or in a separate frame; whether it can load a script file hosted elsewhere; and any limit on its size. Not yet decided: where a toy's built script is hosted, if anywhere, and how it reaches the embed.
 
 ## Done when
-The website's hosting is verified and recorded as a fact, and the delivery route is decided in a decision record.
+A small test embed has answered the unknowns, the answers are recorded as facts, and the delivery route is decided in a decision record.
