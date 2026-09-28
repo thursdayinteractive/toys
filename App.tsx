@@ -3,6 +3,7 @@
 
 import { useState, type JSX } from 'react';
 import { Platform, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import { deviceStorage } from './src/deviceStorage';
 import type { Toy } from './src/toy';
 import { toys } from './src/toys';
 import { ToyFrame } from './src/presentation/ToyFrame';
@@ -13,7 +14,7 @@ export default function App(): JSX.Element {
   const [open, setOpen] = useState<Toy | null>(null);
   return (
     <SafeAreaView style={styles.container}>
-      {open === null ? <ToyMenu toys={toys} onOpen={setOpen} /> : <ToyFrame toy={open} onMenu={() => setOpen(null)} />}
+      {open === null ? <ToyMenu toys={toys} onOpen={setOpen} /> : <ToyFrame toy={open} onMenu={() => setOpen(null)} storage={deviceStorage} />}
     </SafeAreaView>
   );
 }

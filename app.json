@@ -25,6 +25,9 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "owner": "thursdayinteractive"
+    "owner": "thursdayinteractive",
+    "plugins": [
+      "expo-sqlite"
+    ]
   }
 }

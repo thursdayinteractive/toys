@@ -1,13 +1,15 @@
 // The randomizer's screen ([[randomizer§9]]): the dice roller above a divider,
-// then the item rows and "Randomize". Every rule comes from the toy's cores;
-// the screen only shows them. Saved lists ([[randomizer§6]]) are not built yet.
+// then the item rows, "Randomize" and the saved lists ([[randomizer§6]]).
+// Every rule comes from the toy's cores; the screen only shows them.
 
 import { useEffect, useRef, useState, type JSX } from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Button } from '../../../src/presentation/components/Button';
+import type { ToyScreenProps } from '../../../src/toy';
 import { color, font, radius, spacing } from '../../../src/presentation/tokens';
 import { isFacesEntry, isQuantityEntry, roll, rollRequest } from '../core/diceRoller';
 import { chances, formatChance, isMultiplierEntry, multiplierFromEntry, pick, type Item } from '../core/randomizer';
+import { TITLE_MAX, deleteList, isBlankTitle, isTitleEntry, listsFromText, listsToText, saveList, type SavedList } from '../core/savedLists';
 import { SPIN_MS, SpinningDie } from './SpinningDie';
 
 const trashIcon = require('../../../assets/icons/icon-trash-simple.png');
@@ -22,6 +24,7 @@ type Shown = { readonly kind: 'none' } | { readonly kind: 'spinning' } | { reado
 
 const NONE: Shown = { kind: 'none' };
 const MIN_ROWS = 2;
+const SAVED_LISTS = 'randomizer.savedLists';
 const RESULT_AREA_HEIGHT = 96;
 const RESULT_FONT_SIZE = 32;
 
@@ -62,7 +65,7 @@ function ResultArea({ shown, warning }: { shown: Shown; warning?: boolean }): JS
   );
 }
 
-export function RandomizerScreen(): JSX.Element {
+export function RandomizerScreen({ storage }: ToyScreenProps): JSX.Element {
   const [faces, setFaces] = useState('');
   const [quantity, setQuantity] = useState('');
   const [diceWarning, setDiceWarning] = useState(false);
@@ -75,6 +78,16 @@ export function RandomizerScreen(): JSX.Element {
   ]);
   const [pickWarning, setPickWarning] = useState(false);
   const [pickShown, spinPick, setPickShown] = useSpinThenShow();
+
+  const [title, setTitle] = useState('');
+  const [saved, setSaved] = useState<SavedList[]>([]);
+  useEffect(() => {
+    void storage.read(SAVED_LISTS).then((text) => setSaved(listsFromText(text)));
+  }, [storage]);
+  const keep = (lists: SavedList[]): void => {
+    setSaved(lists);
+    void storage.write(SAVED_LISTS, listsToText(lists));
+  };
 
   const items = itemsOf(rows);
   const shownChances = items === null ? null : chances(items);
@@ -103,6 +116,22 @@ export function RandomizerScreen(): JSX.Element {
       return;
     }
     spinPick(items[result.index]?.label ?? '');
+  };
+
+  const onSave = (): void => {
+    if (items === null) {
+      setPickWarning(true);
+      setPickShown({ kind: 'text', text: 'Invalid entry' });
+      return;
+    }
+    keep(saveList(saved, { title, items }));
+  };
+
+  const onOpenSaved = (list: SavedList): void => {
+    setRows(list.items.map((item) => ({ key: nextKey.current++, label: item.label, weight: String(item.multiplier) })));
+    setTitle(list.title);
+    setPickWarning(false);
+    setPickShown(NONE);
   };
 
   const setRow = (key: number, change: Partial<Row>): void => {
@@ -179,6 +208,34 @@ export function RandomizerScreen(): JSX.Element {
       <View style={styles.randomize}>
         <Button label="Randomize" onPress={onRandomize} disabled={pickShown.kind === 'spinning'} />
       </View>
+
+      <View style={styles.saveRow}>
+        <TextInput
+          style={[styles.field, styles.titleField]}
+          value={title}
+          placeholder="Title"
+          maxLength={TITLE_MAX}
+          onChangeText={(t) => {
+            if (isTitleEntry(t)) setTitle(t);
+          }}
+        />
+        <Button label="Save" onPress={onSave} disabled={isBlankTitle(title)} />
+      </View>
+      {saved.length > 0 ? <Text style={styles.savedHeading}>Saved lists</Text> : null}
+      {saved.map((list) => (
+        <View key={list.title} style={styles.savedRow}>
+          <Pressable style={styles.savedTitle} onPress={() => onOpenSaved(list)} accessibilityRole="button">
+            <Text style={styles.savedTitleText}>{list.title}</Text>
+          </Pressable>
+          <Pressable
+            onPress={() => keep(deleteList(saved, list.title))}
+            accessibilityRole="button"
+            accessibilityLabel={`Delete ${list.title}`}
+          >
+            <Image source={trashIcon} style={styles.trash} resizeMode="contain" />
+          </Pressable>
+        </View>
+      ))}
     </ScrollView>
   );
 }
@@ -207,4 +264,10 @@ const styles = StyleSheet.create({
   chance: { width: 64, fontSize: font.size.base, color: color.textMuted, textAlign: 'right' },
   trash: { width: 24, height: 24, marginLeft: spacing.sm },
   randomize: { marginTop: spacing.md },
+  saveRow: { flexDirection: 'row', alignItems: 'center', marginTop: spacing.lg },
+  titleField: { width: 160, marginRight: spacing.sm },
+  savedHeading: { fontSize: font.size.lg, fontWeight: font.weight.bold, color: color.text, marginTop: spacing.lg, marginBottom: spacing.xs },
+  savedRow: { flexDirection: 'row', alignItems: 'center', paddingVertical: spacing.xs, borderTopWidth: 1, borderTopColor: color.divider },
+  savedTitle: { flex: 1 },
+  savedTitleText: { fontSize: font.size.base, color: color.primary, fontWeight: font.weight.medium },
 });

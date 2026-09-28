@@ -3,6 +3,7 @@
 
 import type { JSX } from 'react';
 import { StyleSheet, View } from 'react-native';
+import type { Storage } from '../storage';
 import type { Toy } from '../toy';
 import { HeaderBand } from './components/HeaderBand';
 import { spacing } from './tokens';
@@ -10,15 +11,16 @@ import { spacing } from './tokens';
 export interface ToyFrameProps {
   readonly toy: Toy;
   readonly onMenu: () => void;
+  readonly storage: Storage;
 }
 
-export function ToyFrame({ toy, onMenu }: ToyFrameProps): JSX.Element {
+export function ToyFrame({ toy, onMenu, storage }: ToyFrameProps): JSX.Element {
   const { Screen } = toy;
   return (
     <View style={styles.screen}>
       <HeaderBand title={toy.title} onMenuPress={onMenu} />
       <View style={styles.content}>
-        <Screen />
+        <Screen storage={storage} />
       </View>
     </View>
   );
