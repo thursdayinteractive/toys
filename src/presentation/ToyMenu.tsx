@@ -22,7 +22,9 @@ export function ToyMenu({ toys, onOpen }: ToyMenuProps): JSX.Element {
           <View key={toy.id} style={[styles.toy, index > 0 ? styles.divider : null]}>
             <Text style={styles.title}>{toy.title}</Text>
             <Text style={styles.description}>{toy.description}</Text>
-            <Button label="Let's roll!" onPress={() => onOpen(toy)} />
+            <View style={styles.button}>
+              <Button label="Let's roll!" onPress={() => onOpen(toy)} />
+            </View>
           </View>
         ))}
       </ScrollView>
@@ -33,8 +35,9 @@ export function ToyMenu({ toys, onOpen }: ToyMenuProps): JSX.Element {
 const styles = StyleSheet.create({
   screen: { flex: 1 },
   content: { padding: spacing.md },
-  toy: { paddingTop: spacing.sm, paddingBottom: spacing.sm },
+  toy: { paddingTop: spacing.lg, paddingBottom: spacing.lg },
   divider: { borderTopWidth: 1, borderTopColor: color.divider },
   title: { fontSize: font.size.lg, fontWeight: font.weight.bold, color: color.text, marginBottom: spacing.xs },
   description: { fontSize: font.size.base, color: color.text },
+  button: { marginTop: spacing.sm },
 });
