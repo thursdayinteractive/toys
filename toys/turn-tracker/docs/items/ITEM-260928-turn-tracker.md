@@ -21,4 +21,4 @@ Not yet answered:
 - whether the two features share one screen.
 
 ## Done when
-The owner has answered those questions, the toy's spec is written, and both features work in the standalone app.
+The owner has answered those questions, the toy's spec is written, and both features work in the standalone app. Built 2026-09-28; what remains to see on a device is listed in [[ITEM-260928-device-turn-tracker]].
