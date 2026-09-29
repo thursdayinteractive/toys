@@ -30,7 +30,7 @@ There are four counters, one per person. Each starts at 0 and adds one per tap. 
 # 4. Screens
 
 1. The first screen shows two buttons, "Turn timer" and "Talk clicker", each opening its feature. It is upright, under the app's header band.
-2. The turn timer and the talk clicker are shown sideways, filling the screen with no header band. Each has a small back arrow that returns to the first screen.
+2. The turn timer and the talk clicker are shown sideways, filling the screen with no header band. Each has a small back arrow that returns to the first screen. On the website they are not turned sideways: they fill the space the page gives them, which on a tablet is big enough to use.
 3. The turn timer shows nothing but one large element in the middle and the back arrow at the bottom left. The element reads "Start" in the same style as the time, then shows the time, then the dragon. Tapping "Start" starts the first turn at 0:00. The device's screen stays awake while the turn timer is open.
 4. The talk clicker has one large tapping area in each of the four corners, each showing its count. A "Reset" button and the back arrow sit small in the middle, away from the tapping areas.
 5. The screens are built from the toy's cores and hold none of the toy's logic, so they can also serve as the toy's interface inside the curriculum app.
