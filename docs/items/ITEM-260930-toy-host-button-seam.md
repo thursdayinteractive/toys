@@ -19,7 +19,7 @@ Owner direction, 2026-09-30: edit the toys so one copy of each runs in both host
 ## Decisions
 - **Settled, owner, 2026-09-30.** Guard in the handlers. No `disabled` prop on a button.
 - **Settled, owner, 2026-09-30.** The randomizer spec's screen items 8 and 9 now say the button "does nothing when tapped", and the device-check item matches. Done in this branch.
-- **Proposed.** A host supplies the `Button` to a toy's screen as a prop, the way it already supplies `storage`. The toys' `Button` contract becomes `{ label, onPress }`. Reason: the button differs per host, as storage does, so the same channel serves. Only the turn tracker needs one hand-off, from its screen to the talk clicker.
+- **Settled, owner, 2026-09-30.** A host supplies the `Button` to a toy's screen as a prop, the way it already supplies `storage`. The toys' `Button` contract becomes `{ label, onPress }`. Reason: the button differs per host, as storage does, so the same channel serves. Only the turn tracker needs one hand-off, from its screen to the talk clicker.
 - **Proposed.** `tokens` stays a relative import. It works wherever a host keeps `tokens` at `src/presentation/tokens` and the toys under `toys/`, as the curriculum app does. This constrains how the toys' code is delivered there.
 - **Proposed.** The addendum for this capability is written after the solution works, per the spec's addendum rule.
 
@@ -28,9 +28,12 @@ Give the toys their own `Button` inside the toys folder, with no contract change
 
 ## Steps
 1. In the randomizer screen, return early from the roll and randomize handlers while a spin runs, and from the save handler while the title is blank. Remove the three `disabled` props and the `disabled` prop of the toys' `Button`.
-2. Add `Button` to `ToyScreenProps`. Read it in `RandomizerScreen`, `TurnTrackerScreen` and `TalkClicker`. The shell passes its own. Step 2 waits for approval of the proposed decision above.
+2. Add `Button` to `ToyScreenProps`. Read it in `RandomizerScreen`, `TurnTrackerScreen` and `TalkClicker`. The shell passes its own.
 3. Write the addendum. Check whether the User Guide needs a line for the lost dimming.
 4. Run `npm run typecheck`, `npm test`, `npm run docs -- check` and an Android bundle export.
+
+## Built
+Steps 1 and 2 were built 2026-09-30, with `npm run typecheck`, `npm test` (51 passing) and an Android bundle export clean. Step 3 is waiting for the owner's approval. What remains to see on a device is in [[ITEM-260928-device-randomizer-screen]] and [[ITEM-260928-device-turn-tracker]].
 
 ## Not covered
 - Screen behavior has no automated tests, so the new guards are checked only by typecheck, the bundle export and the device check.

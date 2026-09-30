@@ -5,6 +5,7 @@ import type { JSX } from 'react';
 import { StyleSheet, View } from 'react-native';
 import type { Storage } from '../storage';
 import type { Toy } from '../toy';
+import { Button } from './components/Button';
 import { HeaderBand } from './components/HeaderBand';
 import { spacing } from './tokens';
 
@@ -20,7 +21,7 @@ export function ToyFrame({ toy, onMenu, storage }: ToyFrameProps): JSX.Element {
     <View style={styles.screen}>
       <HeaderBand title={toy.title} onMenuPress={onMenu} />
       <View style={styles.content}>
-        <Screen storage={storage} />
+        <Screen storage={storage} Button={Button} />
       </View>
     </View>
   );

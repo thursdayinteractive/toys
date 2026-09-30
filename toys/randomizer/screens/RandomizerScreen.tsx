@@ -4,7 +4,6 @@
 
 import { useEffect, useRef, useState, type JSX } from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
-import { Button } from '../../../src/presentation/components/Button';
 import type { ToyScreenProps } from '../../../src/toy';
 import { color, font, radius, spacing } from '../../../src/presentation/tokens';
 import { isFacesEntry, isQuantityEntry, roll, rollRequest } from '../core/diceRoller';
@@ -65,7 +64,7 @@ function ResultArea({ shown, warning }: { shown: Shown; warning?: boolean }): JS
   );
 }
 
-export function RandomizerScreen({ storage }: ToyScreenProps): JSX.Element {
+export function RandomizerScreen({ storage, Button }: ToyScreenProps): JSX.Element {
   const [faces, setFaces] = useState('');
   const [quantity, setQuantity] = useState('');
   const [diceWarning, setDiceWarning] = useState(false);
@@ -93,6 +92,7 @@ export function RandomizerScreen({ storage }: ToyScreenProps): JSX.Element {
   const shownChances = items === null ? null : chances(items);
 
   const onRoll = (): void => {
+    if (diceShown.kind === 'spinning') return;
     const request = rollRequest(faces, quantity);
     setDiceWarning(request.kind === 'invalid-entry');
     if (request.kind !== 'roll') {
@@ -104,6 +104,7 @@ export function RandomizerScreen({ storage }: ToyScreenProps): JSX.Element {
   };
 
   const onRandomize = (): void => {
+    if (pickShown.kind === 'spinning') return;
     if (items === null) {
       setPickWarning(true);
       setPickShown({ kind: 'text', text: 'Invalid entry' });
@@ -119,6 +120,7 @@ export function RandomizerScreen({ storage }: ToyScreenProps): JSX.Element {
   };
 
   const onSave = (): void => {
+    if (isBlankTitle(title)) return;
     if (items === null) {
       setPickWarning(true);
       setPickShown({ kind: 'text', text: 'Invalid entry' });
@@ -160,7 +162,7 @@ export function RandomizerScreen({ storage }: ToyScreenProps): JSX.Element {
             if (isQuantityEntry(t)) setQuantity(t);
           }}
         />
-        <Button label="Roll" onPress={onRoll} disabled={diceShown.kind === 'spinning'} />
+        <Button label="Roll" onPress={onRoll} />
       </View>
 
       <View style={styles.divider} />
@@ -206,7 +208,7 @@ export function RandomizerScreen({ storage }: ToyScreenProps): JSX.Element {
         }}
       />
       <View style={styles.randomize}>
-        <Button label="Randomize" onPress={onRandomize} disabled={pickShown.kind === 'spinning'} />
+        <Button label="Randomize" onPress={onRandomize} />
       </View>
 
       <View style={styles.saveRow}>
@@ -219,7 +221,7 @@ export function RandomizerScreen({ storage }: ToyScreenProps): JSX.Element {
             if (isTitleEntry(t)) setTitle(t);
           }}
         />
-        <Button label="Save" onPress={onSave} disabled={isBlankTitle(title)} />
+        <Button label="Save" onPress={onSave} />
       </View>
       {saved.length > 0 ? <Text style={styles.savedHeading}>Saved lists</Text> : null}
       {saved.map((list) => (

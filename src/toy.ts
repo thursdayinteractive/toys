@@ -3,9 +3,19 @@
 import type { ComponentType } from 'react';
 import type { Storage } from './storage';
 
-/** What the host passes to a toy's screen. */
+/** The button a host supplies, in its own look, for a toy's screen to use. */
+export interface ToyButtonProps {
+  readonly label: string;
+  readonly onPress: () => void;
+}
+
+/**
+ * What the host passes to a toy's screen. A host passes the same `Button`
+ * component on every render, so a screen's buttons keep their state.
+ */
 export interface ToyScreenProps {
   readonly storage: Storage;
+  readonly Button: ComponentType<ToyButtonProps>;
 }
 
 export interface Toy {
