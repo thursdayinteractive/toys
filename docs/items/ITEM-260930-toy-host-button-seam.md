@@ -21,7 +21,7 @@ Owner direction, 2026-09-30: edit the toys so one copy of each runs in both host
 - **Settled, owner, 2026-09-30.** The randomizer spec's screen items 8 and 9 now say the button "does nothing when tapped", and the device-check item matches. Done in this branch.
 - **Settled, owner, 2026-09-30.** A host supplies the `Button` to a toy's screen as a prop, the way it already supplies `storage`. The toys' `Button` contract becomes `{ label, onPress }`. Reason: the button differs per host, as storage does, so the same channel serves. Only the turn tracker needs one hand-off, from its screen to the talk clicker.
 - **Proposed.** `tokens` stays a relative import. It works wherever a host keeps `tokens` at `src/presentation/tokens` and the toys under `toys/`, as the curriculum app does. This constrains how the toys' code is delivered there.
-- **Proposed.** The addendum for this capability is written after the solution works, per the spec's addendum rule.
+- **Settled, owner, 2026-09-30.** The addendum for this capability is written after the solution works, per the spec's addendum rule.
 
 ## Alternative considered
 Give the toys their own `Button` inside the toys folder, with no contract change. Smaller to build. Cost: the curriculum app would hold a second button implementation outside its own design system, and its look would have to be kept in step by hand. The curriculum app's design system record has not been read for this.
@@ -33,7 +33,7 @@ Give the toys their own `Button` inside the toys folder, with no contract change
 4. Run `npm run typecheck`, `npm test`, `npm run docs -- check` and an Android bundle export.
 
 ## Built
-Steps 1 and 2 were built 2026-09-30, with `npm run typecheck`, `npm test` (51 passing) and an Android bundle export clean. Step 3 is waiting for the owner's approval. What remains to see on a device is in the randomizer's and the turn tracker's device-check items.
+Steps 1 and 2 were built 2026-09-30, with `npm run typecheck`, `npm test` (51 passing) and an Android bundle export clean. Step 3 was done the same day, by owner approval: the addendum is `docs/architecture/addenda/host-button.md`, and no guide describes a disabled or dimmed button, so none needed a line. What remains to see on a device is in the randomizer's and the turn tracker's device-check items.
 
 ## Not covered
 - Screen behavior has no automated tests, so the new guards are checked only by typecheck, the bundle export and the device check.
