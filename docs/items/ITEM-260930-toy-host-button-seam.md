@@ -33,7 +33,7 @@ Give the toys their own `Button` inside the toys folder, with no contract change
 4. Run `npm run typecheck`, `npm test`, `npm run docs -- check` and an Android bundle export.
 
 ## Built
-Steps 1 and 2 were built 2026-09-30, with `npm run typecheck`, `npm test` (51 passing) and an Android bundle export clean. Step 3 is waiting for the owner's approval. What remains to see on a device is in [[ITEM-260928-device-randomizer-screen]] and [[ITEM-260928-device-turn-tracker]].
+Steps 1 and 2 were built 2026-09-30, with `npm run typecheck`, `npm test` (51 passing) and an Android bundle export clean. Step 3 is waiting for the owner's approval. What remains to see on a device is in the randomizer's and the turn tracker's device-check items.
 
 ## Not covered
 - Screen behavior has no automated tests, so the new guards are checked only by typecheck, the bundle export and the device check.
