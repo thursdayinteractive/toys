@@ -4,7 +4,7 @@
 
 import { useState, type JSX } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { Button } from '../../../src/presentation/components/Button';
+import type { ToyScreenProps } from '../../../src/toy';
 import { color, font, radius, spacing } from '../../../src/presentation/tokens';
 import { NO_CLICKS, click } from '../core/talkClicker';
 import { BackArrow, Sideways } from './Sideways';
@@ -14,9 +14,10 @@ const CORNERS = [0, 1, 2, 3] as const;
 
 export interface TalkClickerProps {
   readonly onBack: () => void;
+  readonly Button: ToyScreenProps['Button'];
 }
 
-export function TalkClicker({ onBack }: TalkClickerProps): JSX.Element {
+export function TalkClicker({ onBack, Button }: TalkClickerProps): JSX.Element {
   const [counts, setCounts] = useState(NO_CLICKS);
   const corner = (i: 0 | 1 | 2 | 3): JSX.Element => (
     <Pressable
