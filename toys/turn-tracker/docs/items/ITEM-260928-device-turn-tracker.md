@@ -12,10 +12,10 @@ The turn tracker's screens ([[turn-tracker§4]]) were verified only by typecheck
 ## Done when
 On an Android device and an iPhone, from a preview build:
 - the menu and the randomizer stay upright when the device is turned;
-- "Turn timer" and "Talk clicker" each turn the screen sideways, cover the header band, and the back arrow (and Android's back button) returns upright to the first screen;
-- the turn timer shows only "Start", then the time, then the dragon, with the back arrow at the bottom left; tapping the time or the dragon restarts at 0:00;
+- "Turn timer" and "Talk clicker" each turn the screen sideways, cover the header band, and Back (and Android's back button) returns upright to the toy menu;
+- the turn timer shows only "Start", then the time, then the dragon, with Back at the bottom left; tapping the time or the dragon restarts at 0:00;
 - the dragon starts at about 1.5 cm across, which rests on an assumed screen density; it flashes once a second from 2:30, speeding to five a second, and fills the screen at 3:00;
 - the screen does not dim or lock during a turn;
-- the talk clicker's four corners count separately, "Reset" and the back arrow sit clear of them in the middle, and leaving and reopening shows all zeros.
+- the talk clicker's four corners count separately, "Reset" and Back sit clear of them in the middle, and leaving and reopening shows all zeros.
 
 Also on an iPad, which may need an extra app setting before it honors the upright lock; that is unverified against Expo's and Apple's current documentation.

@@ -24,3 +24,7 @@ This repository's toys must work in three places: on their own as an app, on the
 ## Precept conflicts resolved
 
 None found.
+
+## Supersessions
+
+- clause-2 is superseded, for the standalone app and the curriculum app, by [[DEC-261001-toy-plug-in-contract#clause-1]]: a toy's screens are one copy that both run. It stands for the website host and for every core.

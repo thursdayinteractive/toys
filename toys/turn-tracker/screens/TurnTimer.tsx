@@ -2,12 +2,10 @@
 // element in the middle, "Start", then the time, then the dragon. The screen
 // reads the clock and passes it to the core ([[§5]]).
 
-import { useEffect, useState, type JSX } from 'react';
+import { useEffect, useMemo, useState, type JSX } from 'react';
 import { Image, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import { useKeepAwake } from 'expo-keep-awake';
-import { color, font, spacing } from '../../../src/presentation/tokens';
+import type { ToyScreenProps, ToyTokens } from '../../../src/toy';
 import { turnView } from '../core/turnTimer';
-import { BackArrow, Sideways } from './Sideways';
 
 const dragonIcon = require('../../../assets/icons/icon-dragon-head.png');
 
@@ -20,15 +18,13 @@ const DRAGON_START = 57;
 const TICK_MS = 50;
 const TIME_FONT_SIZE = 120;
 
-export interface TurnTimerProps {
-  readonly onBack: () => void;
-}
+export type TurnTimerProps = Pick<ToyScreenProps, 'tokens' | 'Back' | 'KeepAwake' | 'Overlay'>;
 
-export function TurnTimer({ onBack }: TurnTimerProps): JSX.Element {
-  useKeepAwake();
+export function TurnTimer({ tokens, Back, KeepAwake, Overlay }: TurnTimerProps): JSX.Element {
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [now, setNow] = useState(() => Date.now());
   const { width, height } = useWindowDimensions();
+  const styles = useMemo(() => makeStyles(tokens), [tokens]);
 
   useEffect(() => {
     if (startedAt === null) return;
@@ -47,7 +43,8 @@ export function TurnTimer({ onBack }: TurnTimerProps): JSX.Element {
   const dragonSize = view?.kind === 'dragon' ? DRAGON_START + view.growth * (full - DRAGON_START) : 0;
 
   return (
-    <Sideways onBack={onBack}>
+    <Overlay orientation="landscape">
+      <KeepAwake />
       <View style={styles.middle}>
         <Pressable onPress={startTurn} accessibilityRole="button">
           {view === null ? <Text style={styles.time}>Start</Text> : null}
@@ -63,14 +60,16 @@ export function TurnTimer({ onBack }: TurnTimerProps): JSX.Element {
         </Pressable>
       </View>
       <View style={styles.backCorner}>
-        <BackArrow onBack={onBack} />
+        <Back />
       </View>
-    </Sideways>
+    </Overlay>
   );
 }
 
-const styles = StyleSheet.create({
-  middle: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  time: { fontSize: TIME_FONT_SIZE, fontWeight: font.weight.bold, color: color.text, fontVariant: ['tabular-nums'] },
-  backCorner: { position: 'absolute', left: spacing.md, bottom: spacing.md },
-});
+function makeStyles({ color, font, spacing }: ToyTokens) {
+  return StyleSheet.create({
+    middle: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+    time: { fontSize: TIME_FONT_SIZE, fontWeight: font.weight.bold, color: color.text, fontVariant: ['tabular-nums'] },
+    backCorner: { position: 'absolute', left: spacing.md, bottom: spacing.md },
+  });
+}
