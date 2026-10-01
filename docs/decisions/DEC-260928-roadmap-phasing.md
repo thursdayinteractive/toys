@@ -21,3 +21,7 @@ None. The order was set by the owner.
 ## Precept conflicts resolved
 
 None found.
+
+## Supersessions
+
+- clause-1 is superseded, for the curriculum app host, by [[DEC-261001-toy-plug-in-contract#clause-4]]: that host is built now, ahead of the website, by owner direction. The Roadmap's phases are unchanged.

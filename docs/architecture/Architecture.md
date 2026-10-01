@@ -62,7 +62,7 @@ A toy that keeps anything between uses does so through one small storage interfa
 
 1. **Standalone.** One store-distributed app contains every toy. It is built with Expo and React Native. Each toy supplies its screens to the app from its own folder; the app holds no toy's logic.
 2. **Website.** Each toy's website version is one plain JavaScript file: its core and a small web interface. It is placed on the site through the site's embed, which runs it inside a frame. It is not built from the standalone app.
-3. **Curriculum app.** Each toy's core is added to the curriculum app as [[§3]] describes. How its interface is added there is not yet designed.
+3. **Curriculum app.** Each toy's core is added to the curriculum app as [[§3]] describes, and each toy's screens are added there as a component built into the app, from the same one copy the standalone app runs. The curriculum app supplies each screen what the standalone app does (see the host addenda); the list, its menu entry and its failure handling are the curriculum app's own.
 
 ---
 

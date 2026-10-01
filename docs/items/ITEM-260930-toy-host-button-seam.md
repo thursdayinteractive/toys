@@ -20,7 +20,7 @@ Owner direction, 2026-09-30: edit the toys so one copy of each runs in both host
 - **Settled, owner, 2026-09-30.** Guard in the handlers. No `disabled` prop on a button.
 - **Settled, owner, 2026-09-30.** The randomizer spec's screen items 8 and 9 now say the button "does nothing when tapped", and the device-check item matches. Done in this branch.
 - **Settled, owner, 2026-09-30.** A host supplies the `Button` to a toy's screen as a prop, the way it already supplies `storage`. The toys' `Button` contract becomes `{ label, onPress }`. Reason: the button differs per host, as storage does, so the same channel serves. Only the turn tracker needs one hand-off, from its screen to the talk clicker.
-- **Proposed.** `tokens` stays a relative import. It works wherever a host keeps `tokens` at `src/presentation/tokens` and the toys under `toys/`, as the curriculum app does. This constrains how the toys' code is delivered there.
+- **Settled, owner, 2026-10-01.** `tokens` no longer stays a relative import: a host passes the design tokens to a toy's screen as a prop, so a toy's folder is self-contained ([[DEC-261001-toy-plug-in-contract#clause-2]]).
 - **Settled, owner, 2026-09-30.** The addendum for this capability is written after the solution works, per the spec's addendum rule.
 
 ## Alternative considered
