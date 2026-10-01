@@ -2,10 +2,9 @@
 // then the item rows, "Randomize" and the saved lists ([[randomizer§6]]).
 // Every rule comes from the toy's cores; the screen only shows them.
 
-import { useEffect, useRef, useState, type JSX } from 'react';
+import { useEffect, useMemo, useRef, useState, type JSX } from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
-import type { ToyScreenProps } from '../../../src/toy';
-import { color, font, radius, spacing } from '../../../src/presentation/tokens';
+import type { ToyScreenProps, ToyTokens } from '../../../src/toy';
 import { isFacesEntry, isQuantityEntry, roll, rollRequest } from '../core/diceRoller';
 import { chances, formatChance, isMultiplierEntry, multiplierFromEntry, pick, type Item } from '../core/randomizer';
 import { TITLE_MAX, deleteList, isBlankTitle, isTitleEntry, listsFromText, listsToText, saveList, type SavedList } from '../core/savedLists';
@@ -53,7 +52,7 @@ function useSpinThenShow(): [Shown, (text: string) => void, (shown: Shown) => vo
 }
 
 /** A fixed-height, centered space where a result, the spinning die or a warning shows. */
-function ResultArea({ shown, warning }: { shown: Shown; warning?: boolean }): JSX.Element {
+function ResultArea({ shown, warning, styles }: { shown: Shown; warning?: boolean; styles: Styles }): JSX.Element {
   return (
     <View style={styles.resultArea}>
       {shown.kind === 'spinning' ? <SpinningDie /> : null}
@@ -64,7 +63,8 @@ function ResultArea({ shown, warning }: { shown: Shown; warning?: boolean }): JS
   );
 }
 
-export function RandomizerScreen({ storage, Button }: ToyScreenProps): JSX.Element {
+export function RandomizerScreen({ storage, Button, tokens }: ToyScreenProps): JSX.Element {
+  const styles = useMemo(() => makeStyles(tokens), [tokens]);
   const [faces, setFaces] = useState('');
   const [quantity, setQuantity] = useState('');
   const [diceWarning, setDiceWarning] = useState(false);
@@ -142,7 +142,7 @@ export function RandomizerScreen({ storage, Button }: ToyScreenProps): JSX.Eleme
 
   return (
     <ScrollView keyboardShouldPersistTaps="handled">
-      <ResultArea shown={diceWarning ? { kind: 'text', text: 'Invalid entry' } : diceShown} warning={diceWarning} />
+      <ResultArea shown={diceWarning ? { kind: 'text', text: 'Invalid entry' } : diceShown} warning={diceWarning} styles={styles} />
       <View style={styles.diceRow}>
         <Text style={styles.fieldLabel}>Faces:</Text>
         <TextInput
@@ -167,7 +167,7 @@ export function RandomizerScreen({ storage, Button }: ToyScreenProps): JSX.Eleme
 
       <View style={styles.divider} />
 
-      <ResultArea shown={pickShown} warning={pickWarning} />
+      <ResultArea shown={pickShown} warning={pickWarning} styles={styles} />
 
       {rows.map((row, index) => (
         <View key={row.key} style={styles.itemRow}>
@@ -202,6 +202,7 @@ export function RandomizerScreen({ storage, Button }: ToyScreenProps): JSX.Eleme
       ))}
       <Button
         label="+ Add item"
+        variant="link"
         onPress={() => {
           const key = nextKey.current++;
           setRows((current) => [...current, { key, label: '', weight: '' }]);
@@ -242,34 +243,38 @@ export function RandomizerScreen({ storage, Button }: ToyScreenProps): JSX.Eleme
   );
 }
 
-const styles = StyleSheet.create({
-  diceRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' },
-  fieldLabel: { fontSize: font.size.base, color: color.text, marginRight: spacing.xs },
-  field: {
-    borderWidth: 1,
-    borderColor: color.border,
-    borderRadius: radius.sm,
-    backgroundColor: color.surface,
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xs,
-    fontSize: font.size.base,
-    color: color.text,
-  },
-  diceField: { width: 56, marginRight: spacing.sm },
-  resultArea: { minHeight: RESULT_AREA_HEIGHT, alignItems: 'center', justifyContent: 'center', marginBottom: spacing.sm },
-  result: { fontSize: RESULT_FONT_SIZE, fontWeight: font.weight.bold, color: color.text, textAlign: 'center' },
-  warning: { fontSize: font.size.lg, color: color.destructiveText, textAlign: 'center' },
-  divider: { borderTopWidth: 1, borderTopColor: color.divider, marginVertical: spacing.md },
-  itemRow: { flexDirection: 'row', alignItems: 'center', marginBottom: spacing.sm },
-  labelField: { flex: 1, marginRight: spacing.sm },
-  weightField: { width: 64, marginRight: spacing.sm },
-  chance: { width: 64, fontSize: font.size.base, color: color.textMuted, textAlign: 'right' },
-  trash: { width: 24, height: 24, marginLeft: spacing.sm },
-  randomize: { marginTop: spacing.md },
-  saveRow: { flexDirection: 'row', alignItems: 'center', marginTop: spacing.lg },
-  titleField: { width: 160, marginRight: spacing.sm },
-  savedHeading: { fontSize: font.size.lg, fontWeight: font.weight.bold, color: color.text, marginTop: spacing.lg, marginBottom: spacing.xs },
-  savedRow: { flexDirection: 'row', alignItems: 'center', paddingVertical: spacing.xs, borderTopWidth: 1, borderTopColor: color.divider },
-  savedTitle: { flex: 1 },
-  savedTitleText: { fontSize: font.size.base, color: color.primary, fontWeight: font.weight.medium },
-});
+function makeStyles({ color, font, radius, spacing }: ToyTokens) {
+  return StyleSheet.create({
+    diceRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' },
+    fieldLabel: { fontSize: font.size.base, color: color.text, marginRight: spacing.xs },
+    field: {
+      borderWidth: 1,
+      borderColor: color.border,
+      borderRadius: radius.sm,
+      backgroundColor: color.surface,
+      paddingHorizontal: spacing.sm,
+      paddingVertical: spacing.xs,
+      fontSize: font.size.base,
+      color: color.text,
+    },
+    diceField: { width: 56, marginRight: spacing.sm },
+    resultArea: { minHeight: RESULT_AREA_HEIGHT, alignItems: 'center', justifyContent: 'center', marginBottom: spacing.sm },
+    result: { fontSize: RESULT_FONT_SIZE, fontWeight: font.weight.bold, color: color.text, textAlign: 'center' },
+    warning: { fontSize: font.size.lg, color: color.destructiveText, textAlign: 'center' },
+    divider: { borderTopWidth: 1, borderTopColor: color.divider, marginVertical: spacing.md },
+    itemRow: { flexDirection: 'row', alignItems: 'center', marginBottom: spacing.sm },
+    labelField: { flex: 1, marginRight: spacing.sm },
+    weightField: { width: 64, marginRight: spacing.sm },
+    chance: { width: 64, fontSize: font.size.base, color: color.textMuted, textAlign: 'right' },
+    trash: { width: 24, height: 24, marginLeft: spacing.sm },
+    randomize: { marginTop: spacing.md },
+    saveRow: { flexDirection: 'row', alignItems: 'center', marginTop: spacing.lg },
+    titleField: { width: 160, marginRight: spacing.sm },
+    savedHeading: { fontSize: font.size.lg, fontWeight: font.weight.bold, color: color.text, marginTop: spacing.lg, marginBottom: spacing.xs },
+    savedRow: { flexDirection: 'row', alignItems: 'center', paddingVertical: spacing.xs, borderTopWidth: 1, borderTopColor: color.divider },
+    savedTitle: { flex: 1 },
+    savedTitleText: { fontSize: font.size.base, color: color.primary, fontWeight: font.weight.medium },
+  });
+}
+
+type Styles = ReturnType<typeof makeStyles>;
