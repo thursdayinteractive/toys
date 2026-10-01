@@ -25,3 +25,7 @@ Website embeds are cut off below 100 KB but can load a script hosted elsewhere (
 ## Precept conflicts resolved
 
 None found.
+
+## Supersessions
+
+- The reasons under Options considered for not choosing GitHub Pages (publishing from a private repository needs a paid plan) and jsDelivr (it serves only public repositories) rested on this repository being private. It is public as of [[DEC-261001-public-repository#clause-1]]. Clauses 1 to 3 stand: Cloudflare Pages remains the choice, and this note does not reopen it.

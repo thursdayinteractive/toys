@@ -9,6 +9,7 @@ Reversing any of these decisions touches every toy and every host. Everything el
 1. A toy's logic is a platform-free core, separate from any interface.
 2. A core receives every non-deterministic input, such as randomness or the time, from its host and never obtains one itself.
 3. Every toy stays usable as an add-on to the curriculum app, as well as on its own.
+4. The repository is public, so everything in it, history included, is written for public readers ([[DEC-261001-public-repository]]).
 
 ---
 
