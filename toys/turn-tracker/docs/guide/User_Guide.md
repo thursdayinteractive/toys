@@ -12,7 +12,7 @@ The toy's one page besides its spec. It describes what exists now and how to use
 
 For the people who use the turn timer and talk clicker. This section contains no internal IDs.
 
-Open "Your Turn" and choose "Turn timer" or "Talk clicker". Both turn the phone sideways and fill the screen; the small back arrow returns to the choice.
+Open "Your Turn" and choose "Turn timer" or "Talk clicker". Both turn the phone sideways and fill the screen; the small back arrow leaves to the toy menu.
 
 **Turn timer.** Tap "Start" and the time counts up from 0:00. When the next person speaks, tap the time and it starts again at 0:00. At two minutes a dragon replaces the time; tap it to start the next turn. At two and a half minutes the dragon starts to flash and grow, flashing faster as it grows, until at three minutes it fills the screen. The phone's screen stays on while the turn timer is open.
 
@@ -20,4 +20,4 @@ Open "Your Turn" and choose "Turn timer" or "Talk clicker". Both turn the phone 
 
 ## Adding a toy to a host
 
-**Standalone app.** The toy's entry is in `toys/turn-tracker/index.ts` and is listed in `src/toys.ts`. The turn timer and talk clicker open over the app's header band and turn the device sideways while open, putting it back upright when closed. The website and the curriculum app routes are not yet written.
+**Standalone app.** The toy's entry is in `toys/turn-tracker/index.ts` and is listed in `src/toys.ts`. The turn timer and talk clicker open over the app's header band and turn the device sideways while open, putting it back upright when closed; the back arrow and the device's back key leave to the toy menu. The website and the curriculum app routes are not yet written.
