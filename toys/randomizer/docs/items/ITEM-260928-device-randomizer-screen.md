@@ -9,6 +9,10 @@ benchmark: bm-randomizer-standalone
 
 The randomizer's screen ([[randomizer§9]]) was verified only by typecheck and tests, an Android bundle export, and a scripted local web build. Nothing below has been seen on a device.
 
+## Found on a device
+
+On an iPhone (reported as "16, 26.6.2"), from an EAS build, 2026-10-02: with the keyboard open on an item name or the title, the field being typed in was hidden under the keyboard and the list did not scroll to it. Reported by the owner with a screenshot. The scrolling list had no keyboard handling. The change: `automaticallyAdjustKeyboardInsets` on the list, an iOS setting that adds the keyboard's height as space and scrolls the focused field into view. It does nothing on Android. Not yet checked on a device after the change; the last bullet below stays open until it is.
+
 ## Done when
 On an Android device and an iPhone, from a preview build:
 - "Faces:" takes only up to three digits and "Quantity:" up to two, on a number keypad; a weight field refuses a minus sign and a second decimal place, on a decimal keypad;
