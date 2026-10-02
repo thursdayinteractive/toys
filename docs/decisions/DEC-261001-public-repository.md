@@ -15,14 +15,14 @@ The curriculum app takes this repository as one npm git dependency ([[DEC-261001
   amends: [§1]
 - **clause-2.** **Assets carry provenance.** Before an image, icon, font or other third-party or generated asset is added, where it came from and under what terms is recorded in a fact. The existing icons and app icon files are recorded as generated with Gemini, on the owner's statement; Gemini's terms of use were not checked.
 - **clause-3.** **Statements that the repository is private are superseded.** `fact-toys-repository` is reworded. The reasons recorded in [[DEC-260928-website-hosting]] for not choosing GitHub Pages and jsDelivr rested on the repository being private; that record notes it, and its choice of Cloudflare Pages stands.
-- **clause-4.** **History is not rewritten.** Six commits carry the owner's business email as author, and many commit messages carry a link to the working session. Rewriting history would change every commit hash, including the one the curriculum app pins, and break the merged pull requests. They stay.
+- **clause-4.** **History was rewritten once.** On 2026-10-02, before the repository became public, the author email on seven commits was changed to a team address by rewriting every branch; every commit hash changed, and the curriculum app's pin moved to match. Many commit messages still carry a link to the working session, and the old commits may stay reachable through GitHub's hidden pull request references until GitHub removes them on request. History is not rewritten again.
 
 ## Options considered
 
 - **A read-only access token.** Lost: it expires, so it has to be replaced on a schedule, and a lapse fails the build with a message that never mentions credentials.
 - **A read-only deploy key.** Lost: it does not expire, but it needs a build script that is unbuilt and untested on the build service, to protect code the owner does not need protected.
 - **An access token with no expiry.** Lost: a long-lived secret kept for the same purpose, with no prompt to review it.
-- **Rewriting history to remove the author email and session links.** Lost: it changes every commit hash, including the pinned one.
+- **Keep history as it was.** Lost: by owner direction, the author email is changed before the repository is public.
 
 ## Precept conflicts resolved
 
