@@ -141,7 +141,11 @@ export function RandomizerScreen({ storage, Button, tokens }: ToyScreenProps): J
   };
 
   return (
-    <ScrollView keyboardShouldPersistTaps="handled">
+    // On iOS this adds the keyboard's height as space at the bottom and scrolls
+    // the field being typed in into view; without it the item and title fields
+    // sit hidden under the keyboard. It does nothing on Android. Not yet checked
+    // on a device after this change.
+    <ScrollView keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets>
       <ResultArea shown={diceWarning ? { kind: 'text', text: 'Invalid entry' } : diceShown} warning={diceWarning} styles={styles} />
       <View style={styles.diceRow}>
         <Text style={styles.fieldLabel}>Faces:</Text>
