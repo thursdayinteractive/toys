@@ -1,6 +1,6 @@
 ---
 id: DEC-261001-public-repository
-status: proposed
+status: accepted
 ---
 
 # The toys repository is public
