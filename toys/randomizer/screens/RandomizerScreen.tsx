@@ -136,6 +136,15 @@ export function RandomizerScreen({ storage, Button, tokens }: ToyScreenProps): J
     setPickShown(NONE);
   };
 
+  // Does nothing while a pick is spinning, as "Randomize" does, so the spin's
+  // result cannot appear after the list it came from has been cleared.
+  const onClear = (): void => {
+    if (pickShown.kind === 'spinning') return;
+    setRows(Array.from({ length: MIN_ROWS }, () => ({ key: nextKey.current++, label: '', weight: '' })));
+    setPickWarning(false);
+    setPickShown(NONE);
+  };
+
   const setRow = (key: number, change: Partial<Row>): void => {
     setRows((current) => current.map((r) => (r.key === key ? { ...r, ...change } : r)));
   };
@@ -204,14 +213,17 @@ export function RandomizerScreen({ storage, Button, tokens }: ToyScreenProps): J
           ) : null}
         </View>
       ))}
-      <Button
-        label="+ Add item"
-        variant="link"
-        onPress={() => {
-          const key = nextKey.current++;
-          setRows((current) => [...current, { key, label: '', weight: '' }]);
-        }}
-      />
+      <View style={styles.addRow}>
+        <Button
+          label="+ Add item"
+          variant="link"
+          onPress={() => {
+            const key = nextKey.current++;
+            setRows((current) => [...current, { key, label: '', weight: '' }]);
+          }}
+        />
+        <Button label="Clear" variant="destructiveLink" onPress={onClear} />
+      </View>
       <View style={styles.randomize}>
         <Button label="Randomize" onPress={onRandomize} />
       </View>
@@ -271,6 +283,8 @@ function makeStyles({ color, font, radius, spacing }: ToyTokens) {
     weightField: { width: 64, marginRight: spacing.sm },
     chance: { width: 64, fontSize: font.size.base, color: color.textMuted, textAlign: 'right' },
     trash: { width: 24, height: 24, marginLeft: spacing.sm },
+    // "Clear" sits at the far end of the row, a full row's width from "+ Add item".
+    addRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
     randomize: { marginTop: spacing.md },
     saveRow: { flexDirection: 'row', alignItems: 'center', marginTop: spacing.lg },
     titleField: { width: 160, marginRight: spacing.sm },
