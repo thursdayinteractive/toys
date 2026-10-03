@@ -7,8 +7,12 @@ import type { ComponentType, ReactNode } from 'react';
 import type { TextStyle } from 'react-native';
 import type { Storage } from './storage';
 
-/** The look of a button: Primary is the default. Link is plain clickable text. */
-export type ToyButtonVariant = 'primary' | 'secondary' | 'destructive' | 'link';
+/**
+ * The look of a button: Primary is the default. Link is plain clickable text.
+ * DestructiveLink is the same plain text in the destructive color, for a small
+ * action that discards, such as clearing a list.
+ */
+export type ToyButtonVariant = 'primary' | 'secondary' | 'destructive' | 'link' | 'destructiveLink';
 
 /** The button a host supplies, in its own look, for a toy's screen to use. */
 export interface ToyButtonProps {
