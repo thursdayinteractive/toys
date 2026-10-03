@@ -1,6 +1,6 @@
 ---
 id: DEC-261001-toy-plug-in-contract
-status: proposed
+status: accepted
 ---
 
 # One copy of a toy's screens in both React Native hosts
