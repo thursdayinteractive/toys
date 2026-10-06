@@ -3,7 +3,7 @@
 // Every rule comes from the toy's cores; the screen only shows them.
 
 import { useEffect, useMemo, useRef, useState, type JSX } from 'react';
-import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import type { ToyScreenProps, ToyTokens } from '../../../src/toy';
 import { isFacesEntry, isQuantityEntry, roll, rollRequest } from '../core/diceRoller';
 import { chances, formatChance, isMultiplierEntry, multiplierFromEntry, pick, type Item } from '../core/randomizer';
@@ -150,10 +150,12 @@ export function RandomizerScreen({ storage, Button, tokens }: ToyScreenProps): J
   };
 
   return (
-    // On iOS this adds the keyboard's height as space at the bottom and scrolls
-    // the field being typed in into view; without it the item and title fields
-    // sit hidden under the keyboard. It does nothing on Android. Not yet checked
-    // on a device after this change.
+    // automaticallyAdjustKeyboardInsets: on iOS, adds the keyboard's height as
+    // space and scrolls the field being typed in into view. It does nothing on
+    // Android, where the KeyboardAvoidingView does the same job; the curriculum
+    // app's own screens do the same. That it works on Android has not been checked
+    // on a device.
+    <KeyboardAvoidingView style={styles.keyboardAvoider} behavior="padding" enabled={Platform.OS === 'android'}>
     <ScrollView keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets>
       <ResultArea shown={diceWarning ? { kind: 'text', text: 'Invalid entry' } : diceShown} warning={diceWarning} styles={styles} />
       <View style={styles.diceRow}>
@@ -256,6 +258,7 @@ export function RandomizerScreen({ storage, Button, tokens }: ToyScreenProps): J
         </View>
       ))}
     </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -277,6 +280,7 @@ function makeStyles({ color, font, radius, spacing }: ToyTokens) {
     resultArea: { minHeight: RESULT_AREA_HEIGHT, alignItems: 'center', justifyContent: 'center', marginBottom: spacing.sm },
     result: { fontSize: RESULT_FONT_SIZE, fontWeight: font.weight.bold, color: color.text, textAlign: 'center' },
     warning: { fontSize: font.size.lg, color: color.destructiveText, textAlign: 'center' },
+    keyboardAvoider: { flex: 1 },
     divider: { borderTopWidth: 1, borderTopColor: color.divider, marginVertical: spacing.md },
     itemRow: { flexDirection: 'row', alignItems: 'center', marginBottom: spacing.sm },
     labelField: { flex: 1, marginRight: spacing.sm },
@@ -284,7 +288,7 @@ function makeStyles({ color, font, radius, spacing }: ToyTokens) {
     chance: { width: 64, fontSize: font.size.base, color: color.textMuted, textAlign: 'right' },
     trash: { width: 24, height: 24, marginLeft: spacing.sm },
     // "Clear" sits at the far end of the row, a full row's width from "+ Add item".
-    addRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+    addRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingRight: spacing.sm },
     randomize: { marginTop: spacing.md },
     saveRow: { flexDirection: 'row', alignItems: 'center', marginTop: spacing.lg },
     titleField: { width: 160, marginRight: spacing.sm },
