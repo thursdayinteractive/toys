@@ -29,3 +29,6 @@ On an Android device and an iPhone, from a preview build:
 - with a long list entered, "Clear" in red sits at the right end of the "+ Add item" row, far enough from "+ Add item" that tapping one does not hit the other; tapping it leaves two blank rows with no chances shown, no result or warning, the title and saved lists untouched;
 - tapping "Clear" while the die is spinning for a pick does nothing, and the result still shows;
 - **In the curriculum app, once its button draws the new tier:** "Clear" looks like that app's "Remove" link, bold and in the same red.
+
+## Result, 2026-10-27
+Run on one device, labelled Either device, by owner direction. Lines c65 to c74 on the device checklist page all passed, which covers every bullet above except the last. The last bullet passed in the curriculum app's own device check on 2026-10-06. Not recorded: which device it was, and the build commit. The keyboard change under "Found on a device" does nothing on Android, so the keyboard bullet confirms it only if the device was an iPhone. Stays open until the owner says which device.
