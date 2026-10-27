@@ -1,7 +1,7 @@
 ---
 id: ITEM-261003-randomizer-clear-button
 kind: task
-status: open
+status: closed
 queued: no
 benchmark: bm-randomizer-standalone
 ---
@@ -24,3 +24,6 @@ By the owner's direction, 2026-10-03. With a long list, clearing meant deleting 
 
 ## Done when
 The device checks in [[ITEM-260928-device-randomizer-screen]] pass, and the curriculum app draws the new tier.
+
+## Resolution
+Closed 2026-10-27, by owner direction. The randomizer's device checks passed on an iPhone on 2026-10-27, including the "Clear" checks, and the curriculum app's own device check of the button drawing the new tier passed on 2026-10-06. "Clear does nothing while a pick is spinning" is still recorded above as not settled by the owner; it passed its device check.
