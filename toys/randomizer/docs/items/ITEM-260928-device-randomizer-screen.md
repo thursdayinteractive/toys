@@ -1,7 +1,7 @@
 ---
 id: ITEM-260928-device-randomizer-screen
 kind: task
-status: open
+status: closed
 queued: no
 benchmark: bm-randomizer-standalone
 ---
@@ -31,4 +31,7 @@ On an Android device and an iPhone, from a preview build:
 - **In the curriculum app, once its button draws the new tier:** "Clear" looks like that app's "Remove" link, bold and in the same red.
 
 ## Result, 2026-10-27
-Run on one device, labelled Either device, by owner direction. Lines c65 to c74 on the device checklist page all passed, which covers every bullet above except the last. The last bullet passed in the curriculum app's own device check on 2026-10-06. Not recorded: which device it was, and the build commit. The keyboard change under "Found on a device" does nothing on Android, so the keyboard bullet confirms it only if the device was an iPhone. Stays open until the owner says which device.
+Run on one device, labelled Either device, by owner direction. Lines c65 to c74 on the device checklist page all passed, which covers every bullet above except the last. The last bullet passed in the curriculum app's own device check on 2026-10-06. The device was an iPhone, so the keyboard bullet confirms the change under "Found on a device". The build commit is not recorded.
+
+## Resolution
+Closed 2026-10-27, by owner direction: the device check passed on an iPhone, as recorded under Result.
