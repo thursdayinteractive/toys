@@ -19,3 +19,6 @@ On an Android device and an iPhone, from a preview build:
 - the talk clicker's four corners count separately, "Reset" and Back sit clear of them in the middle, and leaving and reopening shows all zeros.
 
 Also on an iPad, which may need an extra app setting before it honors the upright lock; that is unverified against Expo's and Apple's current documentation.
+
+## Result, 2026-10-27
+Run on one device, labelled Either device, by owner direction. Lines c75 to c80 on the device checklist page all passed, which covers every bullet above. The iPad line (c81) has not been run. Not recorded: which device it was, and the build commit. Stays open until the iPad is checked.
